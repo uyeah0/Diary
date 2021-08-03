@@ -1,0 +1,2 @@
+# Diary
+c++ project
