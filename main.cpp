@@ -59,22 +59,22 @@ int menu() {
 	gotoxy(22-1, 3);
 	cout << "> 일기쓰기" << endl;
 	gotoxy(22, 4);
-	cout << " 일기보기/수정" << endl;
+	cout << "일기보기/수정" << endl;
 	gotoxy(22, 5);
-	cout << " 일기삭제" << endl;
+	cout << "일기삭제" << endl;
 	gotoxy(22, 6);
-	cout << " 도움말" << endl;
+	cout << "도움말" << endl;
 	gotoxy(22, 7);
-	cout << " 종료" << endl;
+	cout << "종료" << endl;
 	while (1) {
 		int n = keyControl();
 		switch (n)
 		{
 		case UP: {
 			if (y > 3) { // 3~7까지 이동
-				gotoxy(x - 1, y);
+				gotoxy(x - 2, y);
 				cout << " ";
-				gotoxy(x - 1, --y);
+				gotoxy(x - 2, --y);
 				cout << ">";
 			}
 			break;
