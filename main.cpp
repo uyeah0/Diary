@@ -2,10 +2,6 @@
 #include<windows.h>
 #include<conio.h>
 #define MAGIC_KEY 224
-//#define UP 0
-//#define DOWN 1
-//#define LEFT 2
-//#define RIGHT 3
 #define SPACE 32
 #define UP 72
 #define DOWN 80
@@ -15,7 +11,7 @@
 using namespace std;
 
 void gotoxy(int x, int y) {
-	COORD Pos; //x, y¸¦ °¡Áö°í ÀÖ´Â ±¸Á¶Ã¼ 
+	COORD Pos; //x, yë¥¼ ê°€ì§€ê³  ìˆëŠ” êµ¬ì¡°ì²´ 
 	Pos.X = x; 
 	Pos.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
@@ -23,7 +19,7 @@ void gotoxy(int x, int y) {
 
 
 int keyControl() {
-	int temp; // getchÇÔ¼ö´Â ¿£ÅÍ¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾Æµµ ¹Ù·Î ¹İÈ¯
+	int temp; // getchí•¨ìˆ˜ëŠ” ì—”í„°ë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•„ë„ ë°”ë¡œ ë°˜í™˜
 	int x = 0;
 	int y = 0;
 	while (true) {
@@ -37,7 +33,7 @@ int keyControl() {
 			case DOWN:
 				return DOWN;
 			default:
-				cout << "¹æÇâÅ°·Î ÀÌµ¿ÇØÁÖ¼¼¿ä" << endl;
+				cout << "ë°©í–¥í‚¤ë¡œ ì´ë™í•´ì£¼ì„¸ìš”" << endl;
 			}
 
 		}
@@ -53,25 +49,25 @@ int menu() {
 	int x = 24; 
 	int y = 3;
 	gotoxy(24, 1);
-	cout << "³ªÀÇ ÀÏ±âÀå" << endl;
+	cout << "ë‚˜ì˜ ì¼ê¸°ì¥" << endl;
 	cout << endl << endl;
 
 	gotoxy(22-1, 3);
-	cout << "> ÀÏ±â¾²±â" << endl;
+	cout << "> ì¼ê¸°ì“°ê¸°" << endl;
 	gotoxy(22, 4);
-	cout << "ÀÏ±âº¸±â/¼öÁ¤" << endl;
+	cout << "ì¼ê¸°ë³´ê¸°/ìˆ˜ì •" << endl;
 	gotoxy(22, 5);
-	cout << "ÀÏ±â»èÁ¦" << endl;
+	cout << "ì¼ê¸°ì‚­ì œ" << endl;
 	gotoxy(22, 6);
-	cout << "µµ¿ò¸»" << endl;
+	cout << "ë„ì›€ë§" << endl;
 	gotoxy(22, 7);
-	cout << "Á¾·á" << endl;
+	cout << "ì¢…ë£Œ" << endl;
 	while (1) {
 		int n = keyControl();
 		switch (n)
 		{
 		case UP: {
-			if (y > 3) { // 3~7±îÁö ÀÌµ¿
+			if (y > 3) { // 3~7ê¹Œì§€ ì´ë™
 				gotoxy(x - 2, y);
 				cout << " ";
 				gotoxy(x - 2, --y);
@@ -80,7 +76,7 @@ int menu() {
 			break;
 		}
 		case DOWN: {
-			if (y < 7) { // ÃÖ´ë 7
+			if (y < 7) { // ìµœëŒ€ 7
 				cout << " ";
 				gotoxy(x - 1, ++y);
 				cout << ">";
@@ -100,14 +96,14 @@ int main() {
 	
 
 	/*int menu;
-	cout << "¸Ş´º ÀÔ·Â >> ";
+	cout << "ë©”ë‰´ ì…ë ¥ >> ";
 	cin >> menu;
 	switch (menu)
 	{
-	case 1:  cout << "1¹ø" << endl;  break;
-	case 2:	cout << "2¹ø" << endl;  break;
-	case 3 : cout << "3¹ø" << endl;  break;
-	case 4 :cout << "4¹ø" << endl;  break;
+	case 1:  cout << "1ë²ˆ" << endl;  break;
+	case 2:	cout << "2ë²ˆ" << endl;  break;
+	case 3 : cout << "3ë²ˆ" << endl;  break;
+	case 4 :cout << "4ë²ˆ" << endl;  break;
 	default:
 		break;
 	}*/
