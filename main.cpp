@@ -93,20 +93,7 @@ int menu() {
 int main() {
 
 	int menuCode = menu();
-	
 
-	/*int menu;
-	cout << "메뉴 입력 >> ";
-	cin >> menu;
-	switch (menu)
-	{
-	case 1:  cout << "1번" << endl;  break;
-	case 2:	cout << "2번" << endl;  break;
-	case 3 : cout << "3번" << endl;  break;
-	case 4 :cout << "4번" << endl;  break;
-	default:
-		break;
-	}*/
 
 	return 0;
 }
