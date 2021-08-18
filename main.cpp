@@ -51,7 +51,7 @@ int keyControl() {
 
 int menu() {
 	int x = 24; 
-	int y = 3;
+	int y = 3;/*
 	gotoxy(24, 1);
 	cout << "나의 일기장" << endl;
 	cout << endl << endl;
@@ -65,39 +65,68 @@ int menu() {
 	gotoxy(22, 6);
 	cout << "도움말" << endl;
 	gotoxy(22, 7);
-	cout << "종료" << endl;
-	while (1) {
-		int n = keyControl();
-		switch (n)
-		{
-		case UP: {
-			if (y > 3) { // 3~7까지 이동
-				gotoxy(x - 2, y);
-				cout << " ";
-				gotoxy(x - 2, --y);
-				cout << ">";
-			}
-			break;
-		}
-		case DOWN: {
-			if (y < 7) { // 최대 7
-				cout << " ";
-				gotoxy(x - 1, ++y);
-				cout << ">";
-			}
-			break;
-		}
-		case SPACE: {
-			return y - 3;
-		}
-		}
+	cout << "종료" << endl;*/
+
+	gotoxy(24, 1);
+	cout << "나의 콘솔 다이어리" << endl << endl;
+
+	gotoxy(22, 3);
+	cout << "1. 일기쓰기" << endl;
+	gotoxy(22, 4);
+	cout << "2. 일기목록(보기, 수정, 삭제)" << endl;
+	gotoxy(22, 5);
+	cout << "3. 도움말" << endl;
+	gotoxy(22, 6);
+	cout << "4. 종료하기" << endl << endl;
+	
+
+	int menu;
+	gotoxy(22, 8);
+	cout << "메뉴 입력 >> ";
+	cin >> menu;
+	switch (menu)
+	{
+	case 1: return 1;
+	case 2:	return 2;
+	case 3: return 3;
+	case 4: return 4;
+	default:
+		return 0; break;
 	}
+	
+	//while (1) {
+	//	int n = keyControl();
+	//	switch (n)
+	//	{
+	//	case UP: {
+	//		if (y > 3) { // 3~7까지 이동
+	//			gotoxy(x - 2, y);
+	//			cout << " ";
+	//			gotoxy(x - 2, --y);
+	//			cout << ">";
+	//		}
+	//		break;
+	//	}
+	//	case DOWN: {
+	//		if (y < 7) { // 최대 7
+	//			cout << " ";
+	//			gotoxy(x - 1, ++y);
+	//			cout << ">";
+	//		}
+	//		break;
+	//	}
+	//	case SPACE: {
+	//		return y - 3;
+	//	}
+	//	}
+	//}
 }
 
 int main() {
 
-	//int menuCode = menu();
-	cout << "나의 콘솔 다이어리" << endl << endl;
+	int menuCode = menu();
+	cout << menuCode << endl;
+	/*cout << "나의 콘솔 다이어리" << endl << endl;
 	cout << "1. 일기쓰기" << endl;
 	cout << "2. 일기목록(보기, 수정, 삭제)" << endl;
 	cout << "3. 도움말" << endl;
@@ -114,7 +143,7 @@ int main() {
 	case 4 :cout << "4번" << endl;  break;
 	default:
 		break;
-	}
+	}*/
 
 	return 0;
 }
