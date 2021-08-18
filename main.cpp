@@ -1,6 +1,7 @@
 #include<iostream>
 #include<windows.h>
 #include<conio.h>
+
 #define MAGIC_KEY 224
 #define SPACE 32
 #define UP 72
@@ -38,11 +39,6 @@ int keyControl() {
 
 		}
 	}
-	/*
-	if (temp == UP) { return UP; }
-	else if (temp == DOWN) { return DOWN; }
-	else if (temp == LEFT) { return LEFT; }
-	else if (temp == RIGHT) { return RIGHT; }*/
 }
 
 int menu() {
