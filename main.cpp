@@ -2,6 +2,10 @@
 #include<windows.h>
 #include<conio.h>
 #define MAGIC_KEY 224
+//#define UP 0
+//#define DOWN 1
+//#define LEFT 2
+//#define RIGHT 3
 #define SPACE 32
 #define UP 72
 #define DOWN 80
@@ -38,41 +42,32 @@ int keyControl() {
 
 		}
 	}
+	/*
+	if (temp == UP) { return UP; }
+	else if (temp == DOWN) { return DOWN; }
+	else if (temp == LEFT) { return LEFT; }
+	else if (temp == RIGHT) { return RIGHT; }*/
 }
 
 int menu() {
 	int x = 24; 
-	int y = 3;/*
-	gotoxy(24, 1);
-	cout << "나의 일기장" << endl;
-	cout << endl << endl;
+	int y = 3;
 
-	gotoxy(22-1, 3);
-	cout << "> 일기쓰기" << endl;
-	gotoxy(22, 4);
-	cout << "일기보기/수정" << endl;
-	gotoxy(22, 5);
-	cout << "일기삭제" << endl;
-	gotoxy(22, 6);
-	cout << "도움말" << endl;
-	gotoxy(22, 7);
-	cout << "종료" << endl;*/
-
-	gotoxy(24, 1);
+	gotoxy(45, 3);
 	cout << "나의 콘솔 다이어리" << endl << endl;
 
-	gotoxy(22, 3);
+	gotoxy(45, 6);
 	cout << "1. 일기쓰기" << endl;
-	gotoxy(22, 4);
+	gotoxy(45, 8);
 	cout << "2. 일기목록(보기, 수정, 삭제)" << endl;
-	gotoxy(22, 5);
+	gotoxy(45, 10);
 	cout << "3. 도움말" << endl;
-	gotoxy(22, 6);
+	gotoxy(45, 12);
 	cout << "4. 종료하기" << endl << endl;
 	
 
 	int menu;
-	gotoxy(22, 8);
+	gotoxy(45, 16);
 	cout << "메뉴 입력 >> ";
 	cin >> menu;
 	switch (menu)
@@ -84,13 +79,13 @@ int menu() {
 	default:
 		return 0; break;
 	}
+
 }
 
 int main() {
 
 	int menuCode = menu();
 	cout << menuCode << endl;
-
 
 	return 0;
 }
