@@ -2,10 +2,7 @@
 #include<windows.h>
 #include<conio.h>
 #define MAGIC_KEY 224
-//#define UP 0
-//#define DOWN 1
-//#define LEFT 2
-//#define RIGHT 3
+
 #define SPACE 32
 #define UP 72
 #define DOWN 80
