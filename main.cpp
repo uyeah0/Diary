@@ -39,11 +39,7 @@ int keyControl() {
 
 		}
 	}
-	/*
-	if (temp == UP) { return UP; }
-	else if (temp == DOWN) { return DOWN; }
-	else if (temp == LEFT) { return LEFT; }
-	else if (temp == RIGHT) { return RIGHT; }*/
+
 }
 
 int menu() {
