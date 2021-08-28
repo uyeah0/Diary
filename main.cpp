@@ -1,6 +1,7 @@
 #include<iostream>
 #include<windows.h>
 #include<conio.h>
+#include<main.h>
 #define MAGIC_KEY 224
 
 #define SPACE 32
