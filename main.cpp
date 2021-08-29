@@ -43,6 +43,8 @@ int keyControl() {
 
 }
 
+void menuCode(){
+}
 int menu() {
 	int x = 24; 
 	int y = 3;
