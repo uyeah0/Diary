@@ -1,9 +1,16 @@
+#include "Menu.h";
+
+/*
 #include<iostream>
 #include<windows.h>
 #include<conio.h>
-#include<main.h>
 #define MAGIC_KEY 224
 
+
+//#define UP 0
+//#define DOWN 1
+//#define LEFT 2
+//#define RIGHT 3
 #define SPACE 32
 #define UP 72
 #define DOWN 80
@@ -11,9 +18,38 @@
 #define RIGHT 77
 
 using namespace std;
+*/
+
+void Main::printMain() {
+	Menu menu = Menu(50, 1); // ¸Ş´º
+	Help help; // µµ¿ò¸»
+	WriteDiary writediary; // ÀÏ±â¾²±â
+	LoadDiary loaddiary;
+
+	bool isRun = true;
+	bool isPrintHelp = true;
+	bool isWriteDiary = true;
+	bool isLoadDiary = false;
+
+	menu.PrintMenu();
+	menu.RecieveMenu();
+
+	while (isRun) {
+		int selectedMenu = menu.GetSelectedMenu();
+		switch (selectedMenu) 
+		{
+		case 1:
+			if (!isWriteDiary) {
+				writeddiary.Write();
+				isWriteDiary = true;
+			}
+		}
+	}
+
+}
 
 void gotoxy(int x, int y) {
-	COORD Pos; //x, yë¥¼ ê°€ì§€ê³  ìˆëŠ” êµ¬ì¡°ì²´ 
+	COORD Pos; //x, y¸¦ °¡Áö°í ÀÖ´Â ±¸Á¶Ã¼ 
 	Pos.X = x; 
 	Pos.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
@@ -21,7 +57,7 @@ void gotoxy(int x, int y) {
 
 
 int keyControl() {
-	int temp; // getchí•¨ìˆ˜ëŠ” ì—”í„°ë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•„ë„ ë°”ë¡œ ë°˜í™˜
+	int temp; // getchÇÔ¼ö´Â ¿£ÅÍ¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾Æµµ ¹Ù·Î ¹İÈ¯
 	int x = 0;
 	int y = 0;
 	while (true) {
@@ -35,36 +71,38 @@ int keyControl() {
 			case DOWN:
 				return DOWN;
 			default:
-				cout << "ë°©í–¥í‚¤ë¡œ ì´ë™í•´ì£¼ì„¸ìš”" << endl;
+				cout << "¹æÇâÅ°·Î ÀÌµ¿ÇØÁÖ¼¼¿ä" << endl;
 			}
 
 		}
 	}
-
+	/*
+	if (temp == UP) { return UP; }
+	else if (temp == DOWN) { return DOWN; }
+	else if (temp == LEFT) { return LEFT; }
+	else if (temp == RIGHT) { return RIGHT; }*/
 }
 
-void menuCode(){
-}
 int menu() {
 	int x = 24; 
 	int y = 3;
 
 	gotoxy(45, 3);
-	cout << "ë‚˜ì˜ ì½˜ì†” ë‹¤ì´ì–´ë¦¬" << endl << endl;
+	cout << "³ªÀÇ ÄÜ¼Ö ´ÙÀÌ¾î¸®" << endl << endl;
 
 	gotoxy(45, 6);
-	cout << "1. ì¼ê¸°ì“°ê¸°" << endl;
+	cout << "1. ÀÏ±â¾²±â" << endl;
 	gotoxy(45, 8);
-	cout << "2. ì¼ê¸°ëª©ë¡(ë³´ê¸°, ìˆ˜ì •, ì‚­ì œ)" << endl;
+	cout << "2. ÀÏ±â¸ñ·Ï(º¸±â, ¼öÁ¤, »èÁ¦)" << endl;
 	gotoxy(45, 10);
-	cout << "3. ë„ì›€ë§" << endl;
+	cout << "3. µµ¿ò¸»" << endl;
 	gotoxy(45, 12);
-	cout << "4. ì¢…ë£Œí•˜ê¸°" << endl << endl;
+	cout << "4. Á¾·áÇÏ±â" << endl << endl;
 	
 
 	int menu;
 	gotoxy(45, 16);
-	cout << "ë©”ë‰´ ì…ë ¥ >> ";
+	cout << "¸Ş´º ÀÔ·Â >> ";
 	cin >> menu;
 	switch (menu)
 	{
