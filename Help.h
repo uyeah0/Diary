@@ -6,21 +6,20 @@ using namespace std;
 class Help{
 public :
 	void PrintHelp() {
-		char ch = "";
 		Main main = Main();
-		cout << "[ë„ì›€ë§]" << endl;
+		cout << "[µµ¿ò¸»]" << endl;
 		MovePosition(40, 6);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); // ê¸€ì”¨ ìƒ‰ì„ ë°”ê¿ˆ
-		cout << "ì½˜ì†” ì¼ê¸°ìž¥ ìž…ë‹ˆë‹¤." << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); // ±Û¾¾ »öÀ» ¹Ù²Þ
+		cout << "ÄÜ¼Ö ÀÏ±âÀå ÀÔ´Ï´Ù." << endl;
 		MovePosition(40, 8);
-		cout << "ë©”ë‰´ 1ë²ˆì„ í†µí•´ ì¼ê¸°ë¥¼ ìž‘ì„±í•©ë‹ˆë‹¤. " << endl;
+		cout << "¸Þ´º 1¹øÀ» ÅëÇØ ÀÏ±â¸¦ ÀÛ¼ºÇÕ´Ï´Ù. " << endl;
 		MovePosition(40, 10);
-		cout << "ë©”ë‰´ 2ë²ˆì„ í†µí•´ ìž‘ì„±í–ˆë˜ ì¼ê¸°ë¥¼ ë¶ˆëŸ¬ì˜µë‹ˆë‹¤." << endl;
+		cout << "¸Þ´º 2¹øÀ» ÅëÇØ ÀÛ¼ºÇß´ø ÀÏ±â¸¦ ºÒ·¯¿É´Ï´Ù." << endl;
 		MovePosition(40, 12);
-		cout << "ë©”ë‰´ 4ë²ˆì„ ëˆŒëŸ¬ ì¢…ë£Œí•©ë‹ˆë‹¤." << endl;
+		cout << "¸Þ´º 4¹øÀ» ´­·¯ Á¾·áÇÕ´Ï´Ù." << endl;
 		MovePosition(40, 16);
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
-		cout << "ë©”ì¸ í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ë ¤ë©´ ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”." << endl;
+		cout << "¸ÞÀÎ È­¸éÀ¸·Î µ¹¾Æ°¡·Á¸é ¾Æ¹« Å°³ª ´©¸£¼¼¿ä." << endl;
 	}
 	void MovePosition(int x, int y) {
 		
