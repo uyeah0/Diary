@@ -13,13 +13,13 @@ void gotoxy(int x, int y) {
 int main() {
 	gotoxy(2, 1);
 	string date;
-	cout << "날짜(xxxx.xx.xx) : ";
+	cout << "날짜(yyyymmdd) : ";
 	cin >> date;
 	
 	gotoxy(50, 1);
-	string wheater;
+	string weather;
 	cout << "날씨 : ";
-	cin >> wheater;
+	cin >> weather;
 
 	
 	gotoxy(2, 3);
@@ -34,6 +34,7 @@ int main() {
 	string body;
 	cout << "내용 : ( enter 누른 후 '***' 입력 시 저장)";
 	gotoxy(2, 6);
+	cin >> body;
 
 	return 0;
 }

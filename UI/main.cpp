@@ -1,4 +1,7 @@
 #include <iostream>;
+#include <my_global.h>
+#include<mysql.h>
+#pragma comment(lib, "libmySQL.lib");
 #include<windows.h>
 #include<conio.h>
 using namespace std;
@@ -44,9 +47,12 @@ int menu() {
 }
 
 int main() {
+	MYSQL mysql;
+	mysql_init(&mysql);
 	printMain();
 	int menuCode = menu();
 	cout << menuCode << endl;
 
+	cout << mysql_get_client_info();
 	return 0;
 }
