@@ -7,7 +7,7 @@
 using namespace std;
 
 void gotoxy(int x, int y) {
-	COORD Pos; //x, y¸¦ °¡Áö°í ÀÖ´Â ±¸Á¶Ã¼ 
+	COORD Pos; //x, yë¥¼ ê°€ì§€ê³  ìžˆëŠ” êµ¬ì¡°ì²´ 
 	Pos.X = x;
 	Pos.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
@@ -15,16 +15,16 @@ void gotoxy(int x, int y) {
 
 void printMain() {
 	gotoxy(45, 3);
-	cout << "³ªÀÇ ÄÜ¼Ö ´ÙÀÌ¾î¸®" << endl << endl;
+	cout << "ë‚˜ì˜ ì½˜ì†” ë‹¤ì´ì–´ë¦¬" << endl << endl;
 
 	gotoxy(45, 6);
-	cout << "1. ÀÏ±â¾²±â" << endl;
+	cout << "1. ì¼ê¸°ì“°ê¸°" << endl;
 	gotoxy(45, 8);
-	cout << "2. ÀÏ±â¸ñ·Ï(º¸±â, ¼öÁ¤, »èÁ¦)" << endl;
+	cout << "2. ì¼ê¸°ëª©ë¡(ë³´ê¸°, ìˆ˜ì •, ì‚­ì œ)" << endl;
 	gotoxy(45, 10);
-	cout << "3. µµ¿ò¸»" << endl;
+	cout << "3. ë„ì›€ë§" << endl;
 	gotoxy(45, 12);
-	cout << "4. Á¾·áÇÏ±â" << endl << endl;
+	cout << "4. ì¢…ë£Œí•˜ê¸°" << endl << endl;
 
 }
 
@@ -32,7 +32,7 @@ void printMain() {
 int menu() {
 	int menu;
 	gotoxy(45, 16);
-	cout << "¸Þ´º ÀÔ·Â >> ";
+	cout << "ë©”ë‰´ ìž…ë ¥ >> ";
 	cin >> menu;
 	switch (menu)
 	{
@@ -50,8 +50,6 @@ int main() {
 	MYSQL mysql;
 	mysql_init(&mysql);
 	printMain();
-	int menuCode = menu();
-	cout << menuCode << endl;
 
 	cout << mysql_get_client_info();
 	return 0;
