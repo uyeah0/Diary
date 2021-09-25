@@ -13,8 +13,8 @@ using namespace std;
 #define CHOP(x) x[strlen(x)-1] = ' '
 
 MYSQL* connection = NULL, conn;
-MYSQL_RES* sql_result; // select, show, describe, explain ∞·∞˙ ¥Ÿ∑Á±‚
-MYSQL_ROW sql_row; // row ∞°∏Æ≈¥
+MYSQL_RES* sql_result; // select, show, describe, explain Í≤∞Í≥º Îã§Î£®Í∏∞
+MYSQL_ROW sql_row; // row Í∞ÄÎ¶¨ÌÇ¥
 
 int query_stat;
 
@@ -41,7 +41,7 @@ int main() {
 	mysql_init(&conn);
 
 	
-	// ∞Ë¡§ ø¨∞·
+	// Í≥ÑÏ†ï Ïó∞Í≤∞
 	connection = mysql_real_connect(&conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, NULL, 0);
 	//mysql_set_character_set(&conn, "euckr");
 
@@ -51,13 +51,13 @@ int main() {
 		//return 1;
 	}
 	
-	// «—±€ ªÁøÎ
+	// ÌïúÍ∏Ä ÏÇ¨Ïö©
 	
 	mysql_query(connection, "set session character_set_connection=euckr;");
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-	// µ•¿Ã≈Õ ¡∂»∏
+	// Îç∞Ïù¥ÌÑ∞ Ï°∞Ìöå
 
 	query_stat = mysql_query(connection, "select * from user");
 
@@ -78,37 +78,32 @@ int main() {
 
 	//MovePosition(2, 1);
 	//MovePosition(2, 20);
-	cout << "≥Ø¬•(yyyymmdd) : ";
+	cout << "ÎÇ†Ïßú(yyyymmdd) : ";
 	fgets(date, 10, stdin);
 	CHOP(date);
 
 	//MovePosition(50, 1);
 	//MovePosition(50, 20);
-	cout << "≥Øææ : ";
+	cout << "ÎÇ†Ïî® : ";
 	fgets(weather, 20, stdin);
 
 	CHOP(weather);
 
 	//MovePosition(2, 3);
 	//MovePosition(2, 22);
-	cout << "¡¶∏Ò (30¿⁄¿Ã≥ª) : ";
+	cout << "Ï†úÎ™© (30ÏûêÏù¥ÎÇ¥) : ";
 	fgets(title, 60, stdin);
 	CHOP(title);
 
 	//MovePosition(50, 3);
 	//MovePosition(50, 22);
-	cout << "∏ﬁ¿Œ »≠∏È¿∏∑Œ µπæ∆∞°∑¡∏È æ∆π´ ≈∞≥™ ¥©∏£ººø‰." << endl;
+	cout << "Î©îÏù∏ ÌôîÎ©¥ÏúºÎ°ú ÎèåÏïÑÍ∞ÄÎ†§Î©¥ ÏïÑÎ¨¥ ÌÇ§ÎÇò ÎàÑÎ•¥ÏÑ∏Ïöî." << endl;
 
 	//MovePosition(2, 5);
 	//MovePosition(2, 24);
-	cout << "≥ªøÎ : ( enter ¥©∏• »ƒ '***' ¿‘∑¬ Ω√ ¿˙¿Â)" << endl;
+	cout << "ÎÇ¥Ïö© : ( enter ÎàÑÎ•∏ ÌõÑ '***' ÏûÖÎ†• Ïãú Ï†ÄÏû•)" << endl;
 	//MovePosition(1, 26);
-	/*string n;
-	while (true) {
-		getline(cin, n);
-		if (n != "***")break;
-		body.append(n);
-	}*/
+	
 	fgets(body, 255, stdin);
 	//CHOP(body);
 
