@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include <Windows.h>
 using namespace std;
@@ -17,9 +16,11 @@ public:
 	Menu();
 	void MovePosition(int x, int y);
 	void PrintMenu();
-	
-	int GetSelectedMenu();
-	void RecieveMenu();
 
-	
+	void SPrintMenu(); // 일기 메뉴 출력
+	int GetSelectedMenu(); // 메뉴 선택
+	void RecieveMenu(); // 
+	int LGetSelectedMenu();
+	void LRecieveMenu();
+
 };

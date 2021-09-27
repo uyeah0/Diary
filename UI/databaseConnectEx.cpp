@@ -13,8 +13,8 @@ using namespace std;
 #define CHOP(x) x[strlen(x)-1] = ' '
 
 MYSQL* connection = NULL, conn;
-MYSQL_RES* sql_result; // select, show, describe, explain Í≤∞Í≥º Îã§Î£®Í∏∞
-MYSQL_ROW sql_row; // row Í∞ÄÎ¶¨ÌÇ¥
+MYSQL_RES* sql_result; // select, show, describe, explain ∞·∞˙ ¥Ÿ∑Á±‚
+MYSQL_ROW sql_row; // row ∞°∏Æ≈¥
 
 int query_stat;
 
@@ -30,7 +30,7 @@ void MovePosition(int x, int y)
 }
 
 int main() {
-	int sno= 4;
+	int sno = 4;
 	char date[10];
 	char weather[22];
 	char title[62];
@@ -41,7 +41,7 @@ int main() {
 	mysql_init(&conn);
 
 
-	// Í≥ÑÏ†ï Ïó∞Í≤∞
+	// ∞Ë¡§ ø¨∞·
 	connection = mysql_real_connect(&conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, NULL, 0);
 
 
@@ -50,13 +50,13 @@ int main() {
 		return 1;
 	}
 
-	// ÌïúÍ∏Ä ÏÇ¨Ïö©
+	// «—±€ ªÁøÎ
 
 	mysql_query(connection, "set session character_set_connection=euckr;");
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-	// Îç∞Ïù¥ÌÑ∞ Ï°∞Ìöå
+	// µ•¿Ã≈Õ ¡∂»∏
 
 	query_stat = mysql_query(connection, "select * from user_tb");
 
@@ -75,21 +75,21 @@ int main() {
 
 	cout << "\n-*-* Insert Value -*-*\n";
 
-	cout << "ÎÇ†Ïßú(yyyymmdd) : ";
+	cout << "≥Ø¬•(yyyymmdd) : ";
 	fgets(date, 10, stdin);
 	CHOP(date);
 
-	cout << "ÎÇ†Ïî® : ";
+	cout << "≥Øææ : ";
 	fgets(weather, 22, stdin);
 	CHOP(weather);
 
-	cout << "Ï†úÎ™© (30ÏûêÏù¥ÎÇ¥) : ";
+	cout << "¡¶∏Ò (30¿⁄¿Ã≥ª) : ";
 	fgets(title, 62, stdin);
 	CHOP(title);
 
-	//cout << "Î©îÏù∏ ÌôîÎ©¥ÏúºÎ°ú ÎèåÏïÑÍ∞ÄÎ†§Î©¥ ÏïÑÎ¨¥ ÌÇ§ÎÇò ÎàÑÎ•¥ÏÑ∏Ïöî." << endl;
+	//cout << "∏ﬁ¿Œ »≠∏È¿∏∑Œ µπæ∆∞°∑¡∏È æ∆π´ ≈∞≥™ ¥©∏£ººø‰." << endl;
 
-	cout << "ÎÇ¥Ïö© : ( enter ÎàÑÎ•∏ ÌõÑ '***' ÏûÖÎ†• Ïãú Ï†ÄÏû•)" << endl;
+	cout << "≥ªøÎ : ( enter ¥©∏• »ƒ '***' ¿‘∑¬ Ω√ ¿˙¿Â)" << endl;
 	/*string n;
 	while (true) {
 		getline(cin, n);
