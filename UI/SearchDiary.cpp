@@ -38,7 +38,7 @@ void SearchDiary::ListDiary() { // 일기 보여주기
 
 	sql_result = mysql_store_result(connection);
 
-	menu.MovePosition(0, 20);
+	menu.MovePosition(1, 5);
 	while ((sql_row = mysql_fetch_row(sql_result)) != NULL) {
 		cout << sql_row[1] << "\t" << sql_row[2] << "\t" << "<" << sql_row[3] << ">" << endl;
 	}
@@ -91,27 +91,44 @@ void SearchDiary::Search() { // 일기 검색
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-	Menu menu = Menu(0,0);
-	cout << "검색 : ";
-	//char* s;
+	Menu menu = Menu();
+	cout << "검색(날짜나 제목 입력) : ";
 	string input;
 	cin >> input;
-	//s1 = stoi(s);
 
-	if (input.substr(0, 1) == "2") {//날짜
-	//if (s[0] == '2') {
-		string a = "select * from user_tb where date like '";
-		a.append(a);
-		a.append("'");
-		cout << "a : " << a << endl;
-		//const char s1[40];
-		//s1 = "select * from user_tb where date like '";
-		a += input;
+	if (input.substr(0, 1) == "2") {// 날짜일 경우 
+		string date = "select * from user_tb where date like '";
+		date.append(input);
+		date.append("'");
+		cout << "date : " << date << endl;
 		//조회
-		const char* pStr = a.c_str();
+		const char* pDate = date.c_str();
 		
 
-		query_stat = mysql_query(connection, pStr);
+		query_stat = mysql_query(connection, pDate);
+
+		if (query_stat != 0) { 
+			fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
+		}
+
+		sql_result = mysql_store_result(connection);
+
+		//menu.MovePosition(0, 3);
+		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
+			cout << sql_row[1] << "\t" << sql_row[2] << "\t" << "<" << sql_row[3] << ">" << endl;
+		}
+
+		mysql_close(connection);
+	}
+	else { // 제목일 경우
+		string title = "select * from user_tb where title like '";
+		title.append(input);
+		title.append("'");
+		cout << "title : " << title << endl;
+
+		const char* pTitle = title.c_str();
+
+		query_stat = mysql_query(connection, pTitle);
 
 		if (query_stat != 0) {
 			fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
@@ -120,14 +137,12 @@ void SearchDiary::Search() { // 일기 검색
 		sql_result = mysql_store_result(connection);
 
 		//menu.MovePosition(0, 3);
-		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) {
+		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 			cout << sql_row[1] << "\t" << sql_row[2] << "\t" << "<" << sql_row[3] << ">" << endl;
 		}
 
 		mysql_close(connection);
 	}
-	else { // 제목
 
-	}
 
 };
