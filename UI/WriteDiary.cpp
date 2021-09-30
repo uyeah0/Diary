@@ -13,12 +13,11 @@ void WriteDiary::Write() {
 	int query_stat;
 
 	system("cls");
-	int sno = 2;
-	char date[10];
-	char weather[22];
-	char title[62];
-	char body[255];
-	char query[255];
+	char date[10] = {'\0', };
+	char weather[22] = { '\0', };
+	char title[62] = { '\0', };
+	char body[255] = { '\0', };
+	char query[255] = { '\0', };
 
 	mysql_init(&conn);
 
@@ -37,29 +36,26 @@ void WriteDiary::Write() {
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-
 	menu.MovePosition(1, 1);
 	cout << "날짜(yyyymmdd) : ";
-	fgets(date, 10, stdin);
-	CHOP(date);
-	if (date[0] == 0) {
-		menu.MovePosition(1, 1);
-		cout << "날짜(yyyymmdd) : ";
-		fgets(date, 10, stdin);
-		CHOP(date);
+	while (fgets(date, 10, stdin) != NULL) {
+		if (strlen(date) > 8)
+			break;
 	}
+	CHOP(date);
 
-	menu.MovePosition(60, 1);
+	menu.MovePosition(40, 1);
 	cout << "날씨 : ";
-	fgets(weather, 22, stdin);
+	while (fgets(weather, 22, stdin) != NULL) {
+		if (strlen(weather) > 0)
+			break;
+	}
 	CHOP(weather);
 
-	menu.MovePosition(1, 4);
+	menu.MovePosition(1, 5);
 	cout << "제목 (30자이내) : ";
-	fgets(title, 62, stdin);
+	fgets(title, 60, stdin);
 	CHOP(title);
-
-	
 
 	
 	menu.MovePosition(1, 7);
@@ -68,7 +64,7 @@ void WriteDiary::Write() {
 	fgets(body, 255, stdin);
 	CHOP(body);
 
-	sprintf(query, "insert into user_tb(SNO, DATE, WEATHER, TITLE, BODY) values " "('%d', '%s', '%s', '%s', '%s')", sno, date, weather, title, body);
+	sprintf(query, "insert into user_tb(DATE, WEATHER, TITLE, BODY) values " "( '%s', '%s', '%s', '%s')", date, weather, title, body);
 
 	query_stat = mysql_query(connection, query);
 	if (query_stat != 0) {

@@ -23,5 +23,4 @@ public:
 	void Search();
 	void SelectMenu();
 	void ListDiary();
-
 };

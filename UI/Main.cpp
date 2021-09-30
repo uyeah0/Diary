@@ -12,12 +12,12 @@ void Main::printMain() {
 	bool isTrue = FALSE;
 
 	menu.PrintMenu();
-	menu.RecieveMenu();
+	menu.RecieveMenu(); // 메뉴 입력받기
 	
 
 
 	while (isRun) {
-		int selectedMenu = menu.GetSelectedMenu();
+		int selectedMenu = menu.GetSelectedMenu(); // 입력 메뉴 가져오기
 		switch (selectedMenu)
 		{
 		case 1:
@@ -32,10 +32,10 @@ void Main::printMain() {
 				isSearchDiary = TRUE;
 			}
 			break;
-		case 3:
+		case 3://도움말
 			isRun = FALSE;
 			break;
-		case 4:
+		case 4://종료
 			isRun = FALSE;
 			break;
 		default:

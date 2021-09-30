@@ -16,7 +16,7 @@ using namespace std;
 #define DB_USER "root"
 #define DB_PASS "mirim"
 #define DB_NAME "diarydb"
-#define CHOP(x) x[strlen(x)-1] = ' '
+#define CHOP(x) x[strlen(x)-1] = '\0'
 
 
 

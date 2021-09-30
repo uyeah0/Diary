@@ -16,11 +16,12 @@ public:
 	Menu();
 	void MovePosition(int x, int y);
 	void PrintMenu();
+	// void LPrintMenu(); // 기능 출력
 
-	void SPrintMenu(); // 일기 메뉴 출력
 	int GetSelectedMenu(); // 메뉴 선택
-	void RecieveMenu(); // 
-	int LGetSelectedMenu();
-	void LRecieveMenu();
+	void SPrintMenu(); // 일기 보기, 수정, 삭제 선택
+	void RecieveMenu(); // 메뉴 입력 받기
+	int SGetSelectedMenu(); // 메뉴 값 받기
+	void SRecieveMenu(); // selectMenu 입력 받기
 
 };

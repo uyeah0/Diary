@@ -35,27 +35,26 @@ void Menu::PrintMenu() {
 
 	MovePosition(45, 16);
 	cout << "메뉴 선택 >> ";
-	//MovePosition(40, 19);
 	
 }
 
 void Menu::SPrintMenu() { 
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-	/*cout << "[기능]";
-	MovePosition(55, 2);
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);*/
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	//cout << "[기능]";
+	MovePosition(55, 3);
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);*/
 	cout << "1. 일기 보기";
-	cout << endl;
-	//MovePosition(55, 4);
+	
+	MovePosition(55, 5);
 	cout << "2. 일기 수정하기";
-	cout << endl;
-	//MovePosition(55, 6);
+	
+	MovePosition(55, 7);
 	cout << "3. 일기 삭제하기";
-	cout << endl;
-	//MovePosition(55, 8);
+	
+	MovePosition(55, 9);
 	cout << "4. 메인화면으로 돌아가기";
-	cout << endl;
-	//MovePosition(55, 10);
+	
+	MovePosition(55, 11);
 	cout << "메뉴 선택==> ";
 }
 
@@ -68,12 +67,12 @@ void Menu::RecieveMenu() {
 	cin >> selectedMenu;
 }
 
-int Menu::LGetSelectedMenu() {
+int Menu::SGetSelectedMenu() {
 	return selectedMenu;
 }
 
-void Menu::LRecieveMenu() {
-	MovePosition(70, 10);
+void Menu::SRecieveMenu() {
+	MovePosition(70, 11);
 	cin >> selectedMenu;
 }
 
