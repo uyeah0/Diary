@@ -1,6 +1,8 @@
 #include "Main.h"
 
 void Main::printMain() {
+	system("mode con:cols=930 lines=50");
+	//SetConsoleTitle("");
 	Menu menu = Menu(50, 1);
 	
 	WriteDiary writediary;
@@ -28,7 +30,7 @@ void Main::printMain() {
 			break;
 		case 2:
 			if (!isSearchDiary) {
-				searchdiary.ListDiary();
+				searchdiary.SelectMenu();
 				isSearchDiary = TRUE;
 			}
 			break;

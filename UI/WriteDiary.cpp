@@ -36,31 +36,38 @@ void WriteDiary::Write() {
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-	menu.MovePosition(1, 1);
+	menu.MovePosition(5, 1);
 	cout << "날짜(yyyymmdd) : ";
+
+	menu.MovePosition(80, 1);
+	cout << "날씨 : ";
+
+	menu.MovePosition(5, 5);
+	cout << "제목 (30자이내) : ";
+
+	menu.MovePosition(5, 9);
+	cout << "내용 : " << endl;
+
+	menu.MovePosition(23, 1);
 	while (fgets(date, 10, stdin) != NULL) {
 		if (strlen(date) > 8)
 			break;
 	}
 	CHOP(date);
 
-	menu.MovePosition(40, 1);
-	cout << "날씨 : ";
+	menu.MovePosition(87, 1);
 	while (fgets(weather, 22, stdin) != NULL) {
 		if (strlen(weather) > 0)
 			break;
 	}
 	CHOP(weather);
 
-	menu.MovePosition(1, 5);
-	cout << "제목 (30자이내) : ";
+	menu.MovePosition(23, 5);
 	fgets(title, 60, stdin);
 	CHOP(title);
 
 	
-	menu.MovePosition(1, 7);
-	cout << "내용 : " << endl;
-	menu.MovePosition(1, 9);
+	menu.MovePosition(5, 11);
 	fgets(body, 255, stdin);
 	CHOP(body);
 
@@ -73,11 +80,10 @@ void WriteDiary::Write() {
 
 
 	mysql_close(connection);
-	cout << "------------------------저장완료----------------------- " << endl;
-
-	
+	cout << endl << endl << endl << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+	cout << "------------------------일기 저장 완료----------------------- " << endl;	
 	cout << "메인 화면으로 돌아가려면 아무 키나 누르세요." << endl;
-
 	char ch = _getch();
 	if (ch != 0) {
 		system("cls");
