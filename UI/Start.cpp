@@ -31,10 +31,24 @@ void Start::printStart() {
 	menu.MovePosition(1, 13);
 	cout << "  ! ,!                                            !: : ,,   ";
 	menu.MovePosition(1, 14);
-
+	cout << "  !  *                                            ;! ;,     ";
 	menu.MovePosition(1, 15);
+	cout << "  !  !                                             ! .      ";
+	menu.MovePosition(1, 16);
+	cout << "  ;                                                ,:       ";
+	menu.MovePosition(1, 17);
+	cout << "  :                                               * ~!-     ";
+	menu.MovePosition(1, 18);
+	cout << "   :                                                  ,;    ";
+	menu.MovePosition(1, 19);
+	cout << "   !                                                    ~   ";
+
+
+
+
 
 }
+
 
 
 
