@@ -43,6 +43,10 @@ void Start::printStart() {
 	menu.MovePosition(1, 19);
 	cout << "   !                                                    ~   ";
 
+	menu.MovePosition(1, 20);
+	cout << "   :                                                  ,;    ";
+	menu.MovePosition(1, 21);
+	cout << "   !                                                    ~   ";
 
 
 
