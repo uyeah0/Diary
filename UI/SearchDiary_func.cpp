@@ -42,7 +42,7 @@ void SearchDiary_func::WatchDiary() {
 
 
 	if (input.substr(0, 1) == "2") {// 날짜일 경우 
-		string date = "select * from user_tb where date like '%";
+		string date = "select * from diary where date like '%";
 		date.append(input);
 		date.append("%'");
 		//조회
@@ -105,7 +105,7 @@ void SearchDiary_func::WatchDiary() {
 		mysql_close(connection);
 	}
 	else { // 제목일 경우
-		string title = "select * from user_tb where title like '";
+		string title = "select * from diary where title like '";
 		title.append(input);
 		title.append("'");
 
@@ -132,7 +132,7 @@ void SearchDiary_func::WatchDiary() {
 			cout << "제목 (30자이내) : " << sql_row[3];
 
 			menu.MovePosition(5, 9);
-			cout << "내용 : " << endl;
+			cout << "내용 : ";
 			menu.MovePosition(5, 11);
 			cout << sql_row[4];
 
@@ -187,9 +187,9 @@ void SearchDiary_func::EditDiary() {
 	int query_stat;
 
 	char dateE[10] = { '\0', };
-	char weather[22] = { '\0', };
-	char titleE[62] = { '\0', };
-	char body[255] = { '\0', };
+	char weatherE[22] = { '\0', };
+	char titleE[62] = { '\0', }; //  바뀐 제목
+	char bodyE[255] = { '\0', };
 	char query[255] = { '\0', };
 
 	mysql_init(&conn);
@@ -207,30 +207,29 @@ void SearchDiary_func::EditDiary() {
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
-
-	menu.MovePosition(20, 3);
-	searchdiary.ListDiary();
-
+	system("cls");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12); //빨간색
-	menu.MovePosition(60, 2);
+	menu.MovePosition(30, 2);
 	cout << "[주의] 이전의 내용은 사라집니다." << endl;
-	menu.MovePosition(60, 4);
+	menu.MovePosition(30, 4);
 	cout << "그래도 진행하시려면 1, 이전으로 되돌아가려면 0을 입력하세요=> ";
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); //흰색
 	cin >> choose;
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); //흰색
 	switch (choose)
 	{
 	case 1: {
-		menu.MovePosition(60, 6);
+		menu.MovePosition(30, 6);
 		cout << "수정하려는 일기 제목이나 날짜를 입력해주세요." << endl;
 
-		menu.MovePosition(60, 8);
+		menu.MovePosition(30, 8);
+		cout << "=>";
+		menu.MovePosition(33, 8);
 		cin >> input;
 
 
 		if (input.substr(0, 1) == "2") {// 날짜일 경우 
-			string date = "select * from user_tb where date like '%";
+			string date = "select * from diary where date like '%";
 			date.append(input);
 			date.append("%'");
 			//조회
@@ -250,7 +249,7 @@ void SearchDiary_func::EditDiary() {
 			
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과
 				isSearch = TRUE;
-				snoED = atoi(sql_row[0]);
+				snoED = atoi(sql_row[0]); // 일련번호, 문자열을 정수타입으로 바꾸는 atoi함수 사용
 			}
 			
 			if (!isSearch) {
@@ -269,32 +268,41 @@ void SearchDiary_func::EditDiary() {
 			}
 			else {
 				// 데이터 수정
+				query_stat = mysql_query(connection, pDate);
 
-				menu.MovePosition(5, 1);
-				cout << "날짜(yyyymmdd) : ";
+				if (query_stat != 0) {
+					fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
+				}
 
-				menu.MovePosition(80, 1);
-				cout << "날씨 : ";
+				sql_result = mysql_store_result(connection);
+				while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
+					menu.MovePosition(5, 1);
+					cout << "날짜(yyyymmdd) : " << sql_row[1];
 
-				menu.MovePosition(5, 5);
-				cout << "제목 (30자이내) : ";
+					menu.MovePosition(80, 1);
+					cout << "날씨 : " << sql_row[2];
 
-				menu.MovePosition(5, 9);
-				cout << "내용 : " << endl;
+					menu.MovePosition(5, 5);
+					cout << "제목 (30자이내) : " << sql_row[3];
 
-				menu.MovePosition(23, 1);
-				while (fgets(dateE, 10, stdin) != NULL) {
+					menu.MovePosition(5, 9);
+					cout << "내용 : " << endl;
+					menu.MovePosition(5, 11);
+					cout << sql_row[4];
+				}
+				menu.MovePosition(22, 1);
+				while (fgets(dateE, 10, stdin) != NULL) { 
 					if (strlen(dateE) > 8)
 						break;
 				}
 				CHOP(dateE);
 
 				menu.MovePosition(87, 1);
-				while (fgets(weather, 22, stdin) != NULL) {
-					if (strlen(weather) > 0)
+				while (fgets(weatherE, 22, stdin) != NULL) {
+					if (strlen(weatherE) > 0)
 						break;
 				}
-				CHOP(weather);
+				CHOP(weatherE);
 
 				menu.MovePosition(23, 5);
 				fgets(titleE, 60, stdin);
@@ -302,10 +310,10 @@ void SearchDiary_func::EditDiary() {
 
 
 				menu.MovePosition(5, 11);
-				fgets(body, 255, stdin);
-				CHOP(body);
+				fgets(bodyE, 255, stdin);
+				CHOP(bodyE);
 
-				sprintf(query, "update user_tb set DATE = '%s', WEATHER = '%s', TITLE = '%s', BODY = '%s' where sno = %d", dateE, weather, titleE, body, snoED);
+				sprintf(query, "update diary set DATE = '%s', WEATHER = '%s', TITLE = '%s', BODY = '%s' where sno = %d", dateE, weatherE, titleE, bodyE, snoED);
 				cout << query << endl;
 
 				query_stat = mysql_query(connection, query);
@@ -331,7 +339,7 @@ void SearchDiary_func::EditDiary() {
 			
 		}
 		else { // 제목일 경우
-			string title = "select * from user_tb where title like '";
+			string title = "select * from diary where title like '";
 			title.append(input);
 			title.append("'");
 
@@ -346,36 +354,16 @@ void SearchDiary_func::EditDiary() {
 			sql_result = mysql_store_result(connection);
 
 			system("cls");
-			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
+			char* snoE = 0;
+			int snoED;
+
+			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과
 				isSearch = TRUE;
-				menu.MovePosition(5, 1);
-				cout << "날짜(yyyymmdd) : " << sql_row[1];
-
-				menu.MovePosition(80, 1);
-				cout << "날씨 : " << sql_row[2];
-
-				menu.MovePosition(5, 5);
-				cout << "제목 (30자이내) : " << sql_row[3];
-
-				menu.MovePosition(5, 9);
-				cout << "내용 : " << endl;
-				menu.MovePosition(5, 11);
-				cout << sql_row[4];
-
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
-				menu.MovePosition(80, 5);
-				cout << "이전으로 돌아가려면 아무 키나 누르세요.";
-
-				char ch = _getch();
-				if (ch != 0) {
-					system("cls");
-					searchdiary.SelectMenu();
-				}
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
+				snoED = atoi(sql_row[0]); // 일련번호, 문자열을 정수타입으로 바꾸는 atoi함수 사용
 			}
 
 			if (!isSearch) {
-				system("cls");
+				//system("cls");
 				menu.MovePosition(20, 5);
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 				cout << "일기가 존재하지 않습니다!";
@@ -388,9 +376,75 @@ void SearchDiary_func::EditDiary() {
 					searchdiary.SelectMenu();
 				}
 			}
+			else {
+				// 데이터 수정
+				query_stat = mysql_query(connection, pTitle);
+
+				if (query_stat != 0) {
+					fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
+				}
+
+				sql_result = mysql_store_result(connection);
+				while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
+					menu.MovePosition(5, 1);
+					cout << "날짜(yyyymmdd) : " << sql_row[1];
+
+					menu.MovePosition(80, 1);
+					cout << "날씨 : " << sql_row[2];
+
+					menu.MovePosition(5, 5);
+					cout << "제목 (30자이내) : " << sql_row[3];
+
+					menu.MovePosition(5, 9);
+					cout << "내용 : " << endl;
+					menu.MovePosition(5, 11);
+					cout << sql_row[4];
+				}
+				menu.MovePosition(22, 1);
+				while (fgets(dateE, 10, stdin) != NULL) {
+					if (strlen(dateE) > 8)
+						break;
+				}
+				CHOP(dateE);
+
+				menu.MovePosition(87, 1);
+				while (fgets(weatherE, 22, stdin) != NULL) {
+					if (strlen(weatherE) > 0)
+						break;
+				}
+				CHOP(weatherE);
+
+				menu.MovePosition(23, 5);
+				fgets(titleE, 60, stdin);
+				CHOP(titleE);
 
 
-			mysql_close(connection);
+				menu.MovePosition(5, 11);
+				fgets(bodyE, 255, stdin);
+				CHOP(bodyE);
+
+				sprintf(query, "update diary set DATE = '%s', WEATHER = '%s', TITLE = '%s', BODY = '%s' where sno = %d", dateE, weatherE, titleE, bodyE, snoED);
+				cout << query << endl;
+
+				query_stat = mysql_query(connection, query);
+				if (query_stat != 0) {
+					fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
+				}
+
+
+				mysql_close(connection);
+				cout << endl << endl << endl << endl;
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+				cout << "------------------------일기 수정 완료----------------------- " << endl;
+				cout << "메인 화면으로 돌아가려면 아무 키나 누르세요." << endl;
+				char ch = _getch();
+				if (ch != 0) {
+					system("cls");
+					main.printMain();
+				}
+
+				mysql_close(connection);
+			}
 		}
 
 		break;
@@ -438,12 +492,12 @@ void SearchDiary_func::DeleteDiary() {
 
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12); //빨간색
-	menu.MovePosition(60, 2);
+	menu.MovePosition(30, 2);
 	cout << "[주의] 내용 복구가 불가능합니다." << endl;
-	menu.MovePosition(60, 4);
+	menu.MovePosition(30, 4);
 	cout << "그래도 진행하시려면 1, 이전으로 되돌아가려면 0을 입력하세요=> ";
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); //흰색
-
+	/*삭제할껀지 아닌지*/
 
 
 
@@ -457,7 +511,7 @@ void SearchDiary_func::DeleteDiary() {
 
 
 	if (input.substr(0, 1) == "2") {// 날짜일 경우 
-		string date = "select * from user_tb where date like '%";
+		string date = "select * from diary where date like '%";
 		date.append(input);
 		date.append("%'");
 		//조회
@@ -499,7 +553,7 @@ void SearchDiary_func::DeleteDiary() {
 		mysql_close(connection);
 	}
 	else { // 제목일 경우
-		string title = "select * from user_tb where title like '";
+		string title = "select * from diary where title like '";
 		title.append(input);
 		title.append("'");
 

@@ -7,7 +7,7 @@ void SearchDiary::SelectMenu() { // 메뉴 고르기?
 	SearchDiary_func sdf = SearchDiary_func();
 
 	menu.SPrintMenu();
-	menu.MovePosition(20, 3);
+	menu.MovePosition(40, 3);
 	ListDiary();
 	menu.SRecieveMenu();
 
@@ -103,7 +103,7 @@ void SearchDiary::Search() { // 일기 검색
 
 
 	if (input.substr(0, 1) == "2") {// 날짜일 경우 
-		string date = "select * from user_tb where date like '%";
+		string date = "select * from diary where date like '%";
 		date.append(input);
 		date.append("%'");
 		//조회
@@ -146,7 +146,7 @@ void SearchDiary::Search() { // 일기 검색
 		mysql_close(connection);
 	}
 	else { // 제목일 경우
-		string title = "select * from user_tb where title like '";
+		string title = "select * from diary where title like '";
 		title.append(input);
 		title.append("'");
 
@@ -219,7 +219,7 @@ void SearchDiary::ListDiary() { // 일기 보여주기
 
 	// 데이터 조회
 
-	query_stat = mysql_query(connection, "select * from user_tb");
+	query_stat = mysql_query(connection, "select * from diary");
 
 	if (query_stat != 0) {
 		fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
@@ -228,22 +228,18 @@ void SearchDiary::ListDiary() { // 일기 보여주기
 	sql_result = mysql_store_result(connection);
 
 	
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
-	cout << "┌──────────────[일기 목록]──────────────┐" << endl;
-	int x = 13, y = 5;
+	menu.MovePosition(1, 1);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+	cout << "┌────────────[일기 목록]────────────┐" << endl;
+	int x = 10, y = 5;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	while ((sql_row = mysql_fetch_row(sql_result)) != NULL) {
 		menu.MovePosition(x, y++);
 		y++;
-		cout << sql_row[1] << "\t" << sql_row[2] << "\t" << "<" << sql_row[3] << ">" << endl;
+		cout <<sql_row[1] << "\t" << "\t" << "<" << sql_row[3] << ">" <<endl;
 	}
-	cout << "│                                       │" << endl;
-	cout << "└───────────────────────────────────────┘" << endl;
-
-
-	
-
-	
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+	cout << "└───────────────────────────────────┘" << endl;
 
 	mysql_close(connection);
 

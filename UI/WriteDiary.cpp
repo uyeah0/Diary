@@ -16,7 +16,8 @@ void WriteDiary::Write() {
 	char date[10] = {'\0', };
 	char weather[22] = { '\0', };
 	char title[62] = { '\0', };
-	char body[255] = { '\0', };
+	//char body[255] = { '\0', };
+	string body;
 	char query[255] = { '\0', };
 
 	mysql_init(&conn);
@@ -66,12 +67,20 @@ void WriteDiary::Write() {
 	fgets(title, 60, stdin);
 	CHOP(title);
 
-	
 	menu.MovePosition(5, 11);
-	fgets(body, 255, stdin);
-	CHOP(body);
+	string line;
+	while (true) {
+		getline(cin, line);
+		if (line.compare("***") == 0)
+			break;
+		body += line;
+	}
+	body += ' ';
 
-	sprintf(query, "insert into user_tb(DATE, WEATHER, TITLE, BODY) values " "( '%s', '%s', '%s', '%s')", date, weather, title, body);
+	/*fgets(body, 255, stdin);
+	CHOP(body);*/
+
+	sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY) values " "( '%s', '%s', '%s', '%s')", date, weather, title, body);
 
 	query_stat = mysql_query(connection, query);
 	if (query_stat != 0) {

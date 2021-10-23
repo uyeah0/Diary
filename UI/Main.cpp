@@ -1,7 +1,7 @@
 #include "Main.h"
 
 void Main::printMain() {
-	system("mode con:cols=930 lines=50");
+	system("mode con:cols=120 lines=28");
 	Menu menu = Menu(50, 1);
 	
 	WriteDiary writediary;
@@ -13,12 +13,12 @@ void Main::printMain() {
 	bool isTrue = FALSE;
 
 	menu.PrintMenu();
-	menu.RecieveMenu(); // ë©”ë‰´ ì…ë ¥ë°›ê¸°
+	menu.RecieveMenu(); // ¸Ş´º ÀÔ·Â¹Ş±â
 	
 
 
 	while (isRun) {
-		int selectedMenu = menu.GetSelectedMenu(); // ì…ë ¥ ë©”ë‰´ ê°€ì ¸ì˜¤ê¸°
+		int selectedMenu = menu.GetSelectedMenu(); // ÀÔ·Â ¸Ş´º °¡Á®¿À±â
 		switch (selectedMenu)
 		{
 		case 1:
@@ -33,10 +33,10 @@ void Main::printMain() {
 				isSearchDiary = TRUE;
 			}
 			break;
-		case 3://ë„ì›€ë§
+		case 3://µµ¿ò¸»
 			isRun = FALSE;
 			break;
-		case 4://ì¢…ë£Œ
+		case 4://Á¾·á
 			isRun = FALSE;
 			break;
 		default:
@@ -47,17 +47,8 @@ void Main::printMain() {
 		}
 		if (!isRun) {
 			menu.MovePosition(45, 20);
-			cout << "í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤." << endl;
+			cout << "ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù." << endl;
 			exit(0);
 		}
 	}
-}
-
-
-int main() {
-	
-	system("cls");
-	Main main = Main();
-	main.printMain();
-	return 0;
 }

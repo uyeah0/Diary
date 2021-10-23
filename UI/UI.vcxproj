@@ -143,16 +143,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="SearchDiary.cpp" />
-    <ClCompile Include="WriteDiary.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Main.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="SearchDiary.h" />
+    <ClInclude Include="SearchDiary_func.h" />
+    <ClInclude Include="Start.h" />
     <ClInclude Include="WriteDiary.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="SearchDiary.cpp" />
+    <ClCompile Include="SearchDiary_func.cpp" />
+    <ClCompile Include="Start.cpp" />
+    <ClCompile Include="WriteDiary.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

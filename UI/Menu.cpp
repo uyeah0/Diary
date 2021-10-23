@@ -20,20 +20,20 @@ void Menu::MovePosition(int x, int y)
 void Menu::PrintMenu() {
 	system("cls");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14); // 글씨 색 바꾸기
-	MovePosition(88, 3);
+	MovePosition(40, 3);
 	cout << "[나의 콘솔 다이어리]" << endl << endl;
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-	MovePosition(85, 6);
+	MovePosition(38, 6);
 	cout << "1. 일기쓰기" << endl;
-	MovePosition(85, 8);
+	MovePosition(38, 8);
 	cout << "2. 일기목록(보기, 수정, 삭제)" << endl;
-	MovePosition(85, 10);
+	MovePosition(38, 10);
 	cout << "3. 도움말" << endl;
-	MovePosition(85, 12);
+	MovePosition(38, 12);
 	cout << "4. 종료하기" << endl << endl;
 
-	MovePosition(85, 16);
+	MovePosition(38, 15);
 	cout << "메뉴 선택 >> ";
 	
 }
@@ -63,7 +63,7 @@ int Menu::GetSelectedMenu() {
 }
 
 void Menu::RecieveMenu() {
-	MovePosition(100, 16);
+	MovePosition(52, 15);
 	cin >> selectedMenu;
 }
 
