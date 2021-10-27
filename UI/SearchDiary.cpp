@@ -218,8 +218,8 @@ void SearchDiary::ListDiary() { // 일기 보여주기
 	mysql_query(connection, "set session character_set_client=euckr;");
 
 	// 데이터 조회
-
-	query_stat = mysql_query(connection, "select * from diary");
+	
+	/*query_stat = mysql_query(connection, "select * from diary");
 
 	if (query_stat != 0) {
 		fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
@@ -241,6 +241,6 @@ void SearchDiary::ListDiary() { // 일기 보여주기
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
 	cout << "└───────────────────────────────────┘" << endl;
 
-	mysql_close(connection);
+	mysql_close(connection);*/
 
 };

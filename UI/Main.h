@@ -6,9 +6,29 @@
 #include "SearchDiary.h"
 using namespace std;
 
-#define RED 12
-#define YELLOW 14
-#define WHITE 15
+//#define RED 12
+//#define YELLOW 14
+//#define WHITE 15
+//#define PURPLE 13
+
+enum {
+    BLACK,
+    DARK_BLUE,
+    DARK_GREEN,
+    DARK_SKYBLUE,
+    DARK_RED,
+    DARK_VOILET,
+    DAKR_YELLOW,
+    GRAY,
+    DARK_GRAY,
+    BLUE,
+    GREEN,
+    SKYBLUE,
+    RED,
+    VIOLET,
+    YELLOW,
+    WHITE,
+};
 
 class Main {
 public:
