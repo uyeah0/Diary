@@ -6,11 +6,6 @@
 #include "SearchDiary.h"
 using namespace std;
 
-//#define RED 12
-//#define YELLOW 14
-//#define WHITE 15
-//#define PURPLE 13
-
 enum {
     BLACK,
     DARK_BLUE,
@@ -33,4 +28,5 @@ enum {
 class Main {
 public:
 	void printMain();
+    void printBorder();
 }; 

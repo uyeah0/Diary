@@ -1,4 +1,4 @@
-#include "WriteDiary.h"
+ï»¿#include "WriteDiary.h"
 
 void WriteDiary::Write() {
 
@@ -7,63 +7,11 @@ void WriteDiary::Write() {
 	
 	
 	MYSQL* connection = NULL, conn;
-	MYSQL_RES* sql_result; // select, show, describe, explain °á°ú ´Ù·ç±â
-	MYSQL_ROW sql_row; // row °¡¸®Å´
+	MYSQL_RES* sql_result; // select, show, describe, explain ê²°ê³¼ ë‹¤ë£¨ê¸°
+	MYSQL_ROW sql_row; // row ê°€ë¦¬í‚´
 
 	int query_stat;
 
-	system("cls");
-	menu.MovePosition(4, 1);
-	cout << "       o ¦¬ ¦¬¦¬¦¬ ¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¯";
-	menu.MovePosition(4, 2);
-	cout << "¢¾  ¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬                                                                                    ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤ ¦­";
-	menu.MovePosition(4, 3);
-	cout << "                                                                                                             ¦¢ ¦­";
-	menu.MovePosition(4, 4);
-	cout << "                                                                                                             ¦¢ ¦­";
-	menu.MovePosition(4, 5);
-	cout << "¦­                                                                                                            ¦¢ ¦­";
-	menu.MovePosition(4, 6);
-	cout << "                                                                                                             ¦¢ ¦­";
-	menu.MovePosition(4, 7);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 8);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 9);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 10);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 11);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 12);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 13);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4,  14);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 15);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 16);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 17);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 18);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 19);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 20);
-	cout << "¦­                                                                                                              ¦­";
-	menu.MovePosition(4, 21);
-	cout << "¦­ ¦¢                                                                                                             ";
-	menu.MovePosition(4, 22);
-	cout << "¦­ ¦¢                                                                                                            ¦­";
-	menu.MovePosition(4, 23);
-	cout << "¦­ ¦¢                                                                                                              ";
-	menu.MovePosition(4, 24);
-	cout << "¦­ ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡                                                                                    o ¦¬ ¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ ";
-	menu.MovePosition(4, 25);
-	cout << " ¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬      ¢¾ ¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬     ";
-	
 
 	char date[10] = {'\0', };
 	char weather[22] = { '\0', };
@@ -81,10 +29,12 @@ void WriteDiary::Write() {
 	
 	char query[255] = { '\0', };
 
+
+
 	mysql_init(&conn);
 
 
-	// °èÁ¤ ¿¬°á
+	// ê³„ì • ì—°ê²°
 	connection = mysql_real_connect(&conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, NULL, 0);
 
 
@@ -92,85 +42,83 @@ void WriteDiary::Write() {
 		fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
 	}
 
-	//// ÇÑ±Û »ç¿ë
+	//// í•œê¸€ ì‚¬ìš©
 
 	mysql_query(connection, "set session character_set_connection=euckr;");
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
 
 	menu.MovePosition(12, 5);
-	//menu.MovePosition(7, 5);
-
-	cout << "³¯Â¥(yyyymmdd) :  ";
+	cout << "ë‚ ì§œ(yyyymmdd) :  ";
 
 	menu.MovePosition(80, 5);
-	cout << "³¯¾¾ : ";
+	cout << "ë‚ ì”¨ : ";
 
 	menu.MovePosition(12, 7);
-	cout << "Á¦¸ñ(30ÀÚ ÀÌ³») : ";
+	cout << "ì œëª©(30ìž ì´ë‚´) : ";
 
 	menu.MovePosition(12, 9);
-	cout << "³»¿ë(ÃÖ´ë 10ÁÙ) : " << endl;
+	cout << "ë‚´ìš©(ìµœëŒ€ 10ì¤„) : " << endl;
 
-	menu.MovePosition(30, 5);
+	menu.MovePosition(30, 5); // ë‚ ì§œ ìž…ë ¥
 	while (fgets(date, 10, stdin) != NULL) {
 		if (strlen(date) > 8)
 			break;
 	}
 	CHOP(date);
 
-	menu.MovePosition(87, 5);
+	menu.MovePosition(87, 5); // ë‚ ì”¨ ìž…ë ¥
 	while (fgets(weather, 22, stdin) != NULL) {
 		if (strlen(weather) > 0)
 			break;
 	}
 	CHOP(weather);
 
-	menu.MovePosition(30, 7);
+	menu.MovePosition(30, 7); // ì œëª© ìž…ë ¥
 	fgets(title, 60, stdin);
 	CHOP(title);
 
-	menu.MovePosition(12, 11);
+	menu.MovePosition(12, 11); // body ìž…ë ¥
 	int y = 11;
 
-	fgets(body1, 255, stdin);
-	if ( strcmp(body1,"***")) {
+	fgets(body1, 253, stdin);
+	if (!strcmp(body1,"***")) {
 		CHOP(body1);
 		menu.MovePosition(12, ++y);
-		fgets(body2, 255, stdin);
-		if (strcmp(body2, "***")) {
+		fgets(body2, 253, stdin);
+		if (!strcmp(body2, "***")) {
 			CHOP(body2);
 			menu.MovePosition(12, ++y);
-			fgets(body3, 255, stdin);
-			if (strcmp(body3, "***")) {
+			fgets(body3, 253, stdin);
+			if (!strcmp(body3, "***")) {
 				CHOP(body3);
 				menu.MovePosition(12, ++y);
-				fgets(body4, 255, stdin);
-				if (strcmp(body4, "***")) {
+				fgets(body4, 253, stdin);
+				if (!strcmp(body4, "***")) {
 					CHOP(body4);
 					menu.MovePosition(12, ++y);
-					fgets(body5, 255, stdin);
-					if (strcmp(body5, "***")) {
+					fgets(body5, 253, stdin);
+					if (!strcmp(body5, "***")) {
 						CHOP(body5);
 						menu.MovePosition(12, ++y);
-						fgets(body6, 255, stdin);
-						if (strcmp(body6, "***")) {
+						fgets(body6, 253, stdin);
+						if (!strcmp(body6, "***")) {
 							CHOP(body6);
 							menu.MovePosition(12, ++y);
-							fgets(body7, 255, stdin);
-							if (strcmp(body7, "***")) {
+							fgets(body7, 253, stdin);
+							if (!strcmp(body7, "***")) {
 								CHOP(body7);
 								menu.MovePosition(12, ++y);
-								fgets(body8, 255, stdin);
-								if (strcmp(body8, "***")) {
+								fgets(body8, 253, stdin);
+								if (!strcmp(body8, "***")) {
 									CHOP(body8);
 									menu.MovePosition(12, ++y);
-									fgets(body9, 255, stdin);
-									if (strcmp(body9, "***")) {
+									fgets(body9, 253, stdin);
+									if (!strcmp(body9, "***")) {
 										CHOP(body9);
 										menu.MovePosition(12, ++y);
-										fgets(body10, 255, stdin);
-										if (strcmp(body10, "***")) {
+										fgets(body10, 253, stdin);
+										if (!strcmp(body10, "***")) {
 											CHOP(body10);
 											menu.MovePosition(12, ++y);
 										}
@@ -184,11 +132,6 @@ void WriteDiary::Write() {
 		}
 	}
 	
-	
-
-	/*fgets(body, 255, stdin);
-	CHOP(body);*/
-
 	sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", date, weather, title, body1, body2, body3, body4, body5);
 
 	query_stat = mysql_query(connection, query);
@@ -202,10 +145,18 @@ void WriteDiary::Write() {
 	
 	system("cls");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
-	menu.MovePosition(30, 30);
+	menu.MovePosition(32, 12);
+	cout << "() ()						(\\ /)";
+	menu.MovePosition(32, 13);
+	cout << "( '.' )						( . .)â™¥";
+	menu.MovePosition(50, 13);
+	cout << "ì¼ ê¸° ì € ìž¥ ì™„ ë£Œ";
+	menu.MovePosition(32, 14);
+	cout << "(\")_(\")						c(â€)(â€)";
+
 	
-	menu.MovePosition(30, 30);
-	cout << "¸ÞÀÎ È­¸éÀ¸·Î µ¹¾Æ°¡·Á¸é ¾Æ¹« Å°³ª ´©¸£¼¼¿ä." << endl;
+	menu.MovePosition(37, 16);
+	cout << "ë©”ì¸ í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ë ¤ë©´ ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”";
 	char ch = _getch();
 	if (ch != 0) {
 		system("cls");

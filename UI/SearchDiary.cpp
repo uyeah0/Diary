@@ -1,15 +1,13 @@
 #include "SearchDiary.h"
 
-void SearchDiary::SelectMenu() { // 메뉴 고르기?
+void SearchDiary::SelectMenu() { // 메뉴 고르기
 	system("cls");
 	Menu menu = Menu();
 	Main main = Main();
 	SearchDiary_func sdf = SearchDiary_func();
 
-	menu.SPrintMenu();
-	menu.MovePosition(40, 3);
-	ListDiary();
-	menu.SRecieveMenu();
+	menu.FPrintMenu();
+	menu.FRecieveMenu();
 
 	
 
@@ -19,6 +17,8 @@ void SearchDiary::SelectMenu() { // 메뉴 고르기?
 	bool isDeleteDiary = FALSE;
 	bool isBackToMain = FALSE;
 	
+	main.printBorder();
+
 	while (isRun) {
 		int selectedMenu = menu.GetSelectedMenu();
 		switch (selectedMenu)
@@ -55,7 +55,7 @@ void SearchDiary::SelectMenu() { // 메뉴 고르기?
 		}
 
 		if (!isRun) {
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 			menu.MovePosition(45, 15);
 			cout << "프로그램을 종료합니다." << endl;
 			break;
@@ -119,8 +119,6 @@ void SearchDiary::Search() { // 일기 검색
 		sql_result = mysql_store_result(connection);
 
 		system("cls");
-		menu.MovePosition(20, 5);
-		cout << "[검색 결과]" << endl;
 		int x = 17, y = 7;
 		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 			isSearch = TRUE;
@@ -135,7 +133,7 @@ void SearchDiary::Search() { // 일기 검색
 			cout << "일기가 존재하지 않습니다!";
 			menu.MovePosition(20, 7);
 			cout << "아무 키나 누르면 되돌아갑니다.";
-
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 			char ch = _getch();
 			if (ch != 0) {
 				system("cls");
@@ -175,7 +173,7 @@ void SearchDiary::Search() { // 일기 검색
 			cout << "일기가 존재하지 않습니다!";
 			menu.MovePosition(20, 7);
 			cout << "아무 키나 누르면 되돌아갑니다.";
-
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 			char ch = _getch();
 			if (ch != 0) {
 				system("cls");

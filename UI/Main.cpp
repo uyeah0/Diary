@@ -52,3 +52,57 @@ void Main::printMain() {
 		}
 	}
 }
+
+void Main::printBorder() {
+	Menu menu;
+	menu.MovePosition(4, 1);
+	cout << "       o 收 收收收 收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收旬";
+	menu.MovePosition(4, 2);
+	cout << "Ⅵ  收收收收收收收收收收                                                                                    式式式式式式式式式式式式忖 早";
+	menu.MovePosition(4, 3);
+	cout << "                                                                                                             弛 早";
+	menu.MovePosition(4, 4);
+	cout << "                                                                                                             弛 早";
+	menu.MovePosition(4, 5);
+	cout << "早                                                                                                            弛 早";
+	menu.MovePosition(4, 6);
+	cout << "                                                                                                             弛 早";
+	menu.MovePosition(4, 7);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 8);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 9);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 10);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 11);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 12);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 13);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 14);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 15);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 16);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 17);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 18);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 19);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 20);
+	cout << "早                                                                                                              早";
+	menu.MovePosition(4, 21);
+	cout << "早 弛                                                                                                             ";
+	menu.MovePosition(4, 22);
+	cout << "早 弛                                                                                                            早";
+	menu.MovePosition(4, 23);
+	cout << "早 弛                                                                                                              ";
+	menu.MovePosition(4, 24);
+	cout << "早 戌式式式式式式式式式式式                                                                                    o 收 收收收收收收收收收 ";
+	menu.MovePosition(4, 25);
+	cout << " 收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收      Ⅵ 收收收收收收收收收     ";
+}

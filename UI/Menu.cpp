@@ -19,64 +19,15 @@ void Menu::MovePosition(int x, int y)
 }
 void Menu::PrintMenu() {
 	system("cls");
-	Menu menu;
-	menu.MovePosition(4, 1);
-	cout << "       o ━ ━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓";
-	menu.MovePosition(4, 2);
-	cout << "♥  ━━━━━━━━━━                                                                                    ────────────┐ ┃";
-	menu.MovePosition(4, 3);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 4);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 5);
-	cout << "┃                                                                                                            │ ┃";
-	menu.MovePosition(4, 6);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 7);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 8);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 9);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 10);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 11);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 12);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 13);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 14);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 15);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 16);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 17);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 18);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 19);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 20);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 21);
-	cout << "┃ │                                                                                                             ";
-	menu.MovePosition(4, 22);
-	cout << "┃ │                                                                                                            ┃";
-	menu.MovePosition(4, 23);
-	cout << "┃ │                                                                                                              ";
-	menu.MovePosition(4, 24);
-	cout << "┃ └───────────                                                                                    o ━ ━━━━━━━━━ ";
-	menu.MovePosition(4, 25);
-	cout << " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━      ♥ ━━━━━━━━━     ";
+	Main main = Main();
+	main.printBorder();
+	
 
-
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14); // 글씨 색 바꾸기
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW); // 글씨 색 바꾸기
 	MovePosition(50, 4);
 	cout << "[나의 콘솔 다이어리]" << endl << endl;
 
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 	MovePosition(46, 8);
 	cout << "1. 일기쓰기" << endl;
 	MovePosition(46, 10);
@@ -91,74 +42,25 @@ void Menu::PrintMenu() {
 	
 }
 
-void Menu::SPrintMenu() { // 기능 메뉴
-	Menu menu;
-	menu.MovePosition(4, 1);
-	cout << "       o ━ ━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓";
-	menu.MovePosition(4, 2);
-	cout << "♥  ━━━━━━━━━━                                                                                    ────────────┐ ┃";
-	menu.MovePosition(4, 3);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 4);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 5);
-	cout << "┃                                                                                                            │ ┃";
-	menu.MovePosition(4, 6);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 7);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 8);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 9);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 10);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 11);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 12);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 13);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 14);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 15);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 16);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 17);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 18);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 19);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 20);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 21);
-	cout << "┃ │                                                                                                             ";
-	menu.MovePosition(4, 22);
-	cout << "┃ │                                                                                                            ┃";
-	menu.MovePosition(4, 23);
-	cout << "┃ │                                                                                                              ";
-	menu.MovePosition(4, 24);
-	cout << "┃ └───────────                                                                                    o ━ ━━━━━━━━━ ";
-	menu.MovePosition(4, 25);
-	cout << " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━      ♥ ━━━━━━━━━     ";
+void Menu::FPrintMenu() { // 기능 메뉴
+	Menu menu = Menu();
+	Main main = Main();
+	main.printBorder();
 
-
-	MovePosition(55, 3);
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLUE);
+	MovePosition(46, 8);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), SKYBLUE);
 	cout << "1. 일기 보기";
 	
-	MovePosition(55, 5);
+	MovePosition(46, 10);
 	cout << "2. 일기 수정하기";
 	
-	MovePosition(55, 7);
+	MovePosition(46, 12);
 	cout << "3. 일기 삭제하기";
 	
-	MovePosition(55, 9);
+	MovePosition(46, 14);
 	cout << "4. 메인화면으로 돌아가기";
 	
-	MovePosition(55, 12);
+	MovePosition(46, 17);
 	cout << "메뉴 선택==> ";
 }
 
@@ -171,11 +73,11 @@ void Menu::RecieveMenu() { // 기본 메뉴 입력
 	cin >> selectedMenu;
 }
 
-int Menu::SGetSelectedMenu() {
+int Menu::FGetSelectedMenu() {
 	return selectedMenu;
 }
 
-void Menu::SRecieveMenu() {
-	MovePosition(70, 17);
+void Menu::FRecieveMenu() { // 기능 메뉴 입력
+	MovePosition(60, 17);
 	cin >> selectedMenu;
 }
