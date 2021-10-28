@@ -3,97 +3,47 @@
 void Start::printStart() {
 	system("mode con:cols=120 lines=28");
 	Menu menu = Menu();
+	Main main = Main();
+	main.printBorder();
 
-	menu.MovePosition(4, 1);
-	cout << "       o ━ ━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓";
-	menu.MovePosition(4, 2);
-	cout << "♥  ━━━━━━━━━━                                                                                    ────────────┐ ┃";
-	menu.MovePosition(4, 3);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 4);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 5);
-	cout << "┃                                                                                                            │ ┃";
-	menu.MovePosition(4, 6);
-	cout << "                                                                                                             │ ┃";
-	menu.MovePosition(4, 7);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 8);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 9);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 10);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 11);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 12);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 13);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 14);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 15);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 16);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 17);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 18);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 19);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 20);
-	cout << "┃                                                                                                              ┃";
-	menu.MovePosition(4, 21);
-	cout << "┃ │                                                                                                             ";
-	menu.MovePosition(4, 22);
-	cout << "┃ │                                                                                                            ┃";
-	menu.MovePosition(4, 23);
-	cout << "┃ │                                                                                                              ";
-	menu.MovePosition(4, 24);
-	cout << "┃ └───────────                                                                                    o ━ ━━━━━━━━━ ";
-	menu.MovePosition(4, 25);
-	cout << " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━      ♥ ━━━━━━━━━     ";
-
-	menu.MovePosition(20, 2);
+	menu.MovePosition(35, 4);
 	cout << "                         _   ";
-	menu.MovePosition(20, 3);
+	menu.MovePosition(35, 5);
 	cout << "  ___  ___  ___ _ __ ___| |_ ";
-	menu.MovePosition(20, 4);
+	menu.MovePosition(35, 6);
 	cout << " / __|/ _ \\/ __| '__/ _ \\ __|";
-	menu.MovePosition(20, 5);
+	menu.MovePosition(35, 7);
 	cout << " \\__ \\  __/ (__| | |  __/ |_ ";
-	menu.MovePosition(20, 6);
+	menu.MovePosition(35, 8);
 	cout << " |___/\\___|\\___|_|  \\___|\\__|";
 
 
-	menu.MovePosition(27, 7);
-	cout << " ______     .-./`)    ____    .-------.       ____     __  ";
-	menu.MovePosition(27, 8);
-	cout << "|    _ `\'\'. \\ .-.\') .\'  __ `. |  _ _   \\      \\   \\   /  / ";
-	menu.MovePosition(27, 9);
-	cout << "| _ | ) _  \\/ `-\' \\/   \'  \\  \\| ( \' )  |       \\  _. /  \'  ";
-	menu.MovePosition(27, 10);
-	cout << "|( \'\'_\'  ) | `-\'`\"`|___|  /  ||(_ o _) /        _( )_ .\'  ";
-	menu.MovePosition(27, 11);
-	cout << "| . (_) `. | .---.    _.-`   || (_,_).\' __  ___(_ o _)\'    ";
-	menu.MovePosition(27, 12);
-	cout << "|(_    ._) \' |   | .\'   _    ||  |\\ \\  |  ||   |(_,_)\'     ";
-	menu.MovePosition(27, 13);
-	cout << "|  (_.\\.\' /  |   | |  _( )_  ||  | \\ `\'   /|   `-\'  /      ";
-	menu.MovePosition(27, 14);
-	cout << "|       .\'   |   | \\ (_ o _) /|  |  \\    /  \\      /       ";
-	menu.MovePosition(27, 15);
-	cout << "\'-----\'`     \'---\'  \'.(_,_).\' \'\'-\'   `\'-\'    `-..-\'        ";
-	
-	
-	menu.MovePosition(27, 18);
-	cout << "START";
-	menu.MovePosition(35, 18);
-	cout << "SET-PASSWORD";
-	menu.MovePosition(50, 18);
-	cout << "END";
-	
+
+	menu.MovePosition(43, 9);
+	cout << " ___    ____   ____  ____   __ __ ";
+	menu.MovePosition(43, 10);
+	cout << "|   \\  |    | /    ||    \\ |  |  |";
+	menu.MovePosition(43, 11);
+	cout << "|    \\  |  | |  o  ||  D  )|  |  |";
+	menu.MovePosition(43, 12);
+	cout << "|  D  | |  | |     ||    / |  ~  |";
+	menu.MovePosition(43, 13);
+	cout << "|     | |  | |  _  ||    \\ |___, |";
+	menu.MovePosition(43, 14);
+	cout << "|     | |  | |  |  ||  .  \\|     |";
+	menu.MovePosition(43, 15);
+	cout << "|_____||____||__|__||__|\\_||____/ ";
+
+
+
+	menu.MovePosition(54, 19);
+	cout << "시작하기";
+	menu.MovePosition(52, 21);
+	cout << "비밀번호 설정";
+	menu.MovePosition(54, 23);
+	cout << "종료하기";
+
+
 }
 
 

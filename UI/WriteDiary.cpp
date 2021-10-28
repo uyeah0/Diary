@@ -47,7 +47,9 @@ void WriteDiary::Write() {
 	mysql_query(connection, "set session character_set_connection=euckr;");
 	mysql_query(connection, "set session character_set_results=euckr;");
 	mysql_query(connection, "set session character_set_client=euckr;");
-
+	
+	system("cls");
+	main.printBorder();
 	menu.MovePosition(12, 5);
 	cout << "날짜(yyyymmdd) :  ";
 
@@ -82,43 +84,43 @@ void WriteDiary::Write() {
 	int y = 11;
 
 	fgets(body1, 253, stdin);
-	if (!strcmp(body1,"***")) {
+	if (body1[0] != '*' && body1[1] != '*' && body1[2] != '*') {
 		CHOP(body1);
 		menu.MovePosition(12, ++y);
 		fgets(body2, 253, stdin);
-		if (!strcmp(body2, "***")) {
+		if (body2[0] != '*' && body2[1] != '*' && body2[2] != '*') {
 			CHOP(body2);
 			menu.MovePosition(12, ++y);
 			fgets(body3, 253, stdin);
-			if (!strcmp(body3, "***")) {
+			if (body3[0] != '*' && body3[1] != '*' && body3[2] != '*') {
 				CHOP(body3);
 				menu.MovePosition(12, ++y);
 				fgets(body4, 253, stdin);
-				if (!strcmp(body4, "***")) {
+				if (body4[0] != '*' && body4[1] != '*' && body4[2] != '*') {
 					CHOP(body4);
 					menu.MovePosition(12, ++y);
 					fgets(body5, 253, stdin);
-					if (!strcmp(body5, "***")) {
+					if (body5[0] != '*' && body5[1] != '*' && body5[2] != '*') {
 						CHOP(body5);
 						menu.MovePosition(12, ++y);
 						fgets(body6, 253, stdin);
-						if (!strcmp(body6, "***")) {
+						if (body6[0] != '*' && body6[1] != '*' && body6[2] != '*') {
 							CHOP(body6);
 							menu.MovePosition(12, ++y);
 							fgets(body7, 253, stdin);
-							if (!strcmp(body7, "***")) {
+							if (body7[0] != '*' && body7[1] != '*' && body7[2] != '*') {
 								CHOP(body7);
 								menu.MovePosition(12, ++y);
 								fgets(body8, 253, stdin);
-								if (!strcmp(body8, "***")) {
+								if (body8[0] != '*' && body8[1] != '*' && body8[2] != '*') {
 									CHOP(body8);
 									menu.MovePosition(12, ++y);
 									fgets(body9, 253, stdin);
-									if (!strcmp(body9, "***")) {
+									if (body9[0] != '*' && body9[1] != '*' && body9[2] != '*') {
 										CHOP(body9);
 										menu.MovePosition(12, ++y);
 										fgets(body10, 253, stdin);
-										if (!strcmp(body10, "***")) {
+										if (body10[0] != '*' && body10[1] != '*' && body10[2] != '*') {
 											CHOP(body10);
 											menu.MovePosition(12, ++y);
 										}
@@ -132,7 +134,7 @@ void WriteDiary::Write() {
 		}
 	}
 	
-	sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", date, weather, title, body1, body2, body3, body4, body5);
+	sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5, BODY6, body7, body8, body9, body10) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s')", date, weather, title, body1, body2, body3, body4, body5,body6, body7, body8, body9, body10);
 
 	query_stat = mysql_query(connection, query);
 	if (query_stat != 0) {

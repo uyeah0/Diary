@@ -77,10 +77,10 @@ void SearchDiary_func::WatchDiary() {
 
 		if (!isSearch) {
 			system("cls");
-			menu.MovePosition(20, 5);
+			menu.MovePosition(50, 13);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 			cout << "일기가 존재하지 않습니다!";
-			menu.MovePosition(20, 7);
+			menu.MovePosition(50, 15);
 			cout << "아무 키나 누르면 되돌아갑니다.";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 			char ch = _getch();
@@ -113,11 +113,12 @@ void SearchDiary_func::WatchDiary() {
 		}
 
 		if (!isSearch) {
-			//system("cls");
-			menu.MovePosition(20, 5);
+			system("cls");
+			main.printBorder();
+			menu.MovePosition(30, 5);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 			cout << "일기가 존재하지 않습니다!";
-			menu.MovePosition(20, 7);
+			menu.MovePosition(30, 7);
 			cout << "아무 키나 누르면 되돌아갑니다.";
 
 			char ch = _getch();
@@ -128,6 +129,7 @@ void SearchDiary_func::WatchDiary() {
 		}
 		else {
 			system("cls");
+			main.printBorder();
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 				menu.MovePosition(12, 5);
 				cout << "날짜(yyyymmdd) : " << sql_row[1];
@@ -147,7 +149,6 @@ void SearchDiary_func::WatchDiary() {
 
 			}
 		}
-
 
 		mysql_close(connection);
 	}
