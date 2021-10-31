@@ -3,6 +3,7 @@
 void Main::printMain() {
 	system("mode con:cols=120 lines=28");
 	Menu menu = Menu(50, 1);
+	Help help;
 	
 	WriteDiary writediary;
 	SearchDiary searchdiary;
@@ -34,19 +35,23 @@ void Main::printMain() {
 			}
 			break;
 		case 3://도움말
-			isRun = FALSE;
+			if (!isPrintHelp) {
+				help.PrintHelp();
+				isPrintHelp = TRUE;
+			}
 			break;
 		case 4://종료
 			isRun = FALSE;
 			break;
-		default:
+		default: // 다른 값 넣었을 때
 			if (!isTrue) {
 				printMain();
 				isTrue = TRUE;
 			}
 		}
 		if (!isRun) {
-			menu.MovePosition(45, 20);
+			system("cls");
+			menu.MovePosition(40, 5);
 			cout << "프로그램을 종료합니다." << endl;
 			exit(0);
 		}

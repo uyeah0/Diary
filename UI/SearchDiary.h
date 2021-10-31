@@ -16,7 +16,5 @@ using namespace std;
 
 class SearchDiary {
 public:
-	void Search();
 	void SelectMenu();
-	void ListDiary();
 };

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "Menu.h"
+#include "Help.h"
 #include "WriteDiary.h"
 #include "SearchDiary.h"
 using namespace std;

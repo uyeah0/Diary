@@ -123,16 +123,16 @@ void WriteDiary::Write() {
 										if (body10[0] != '*' && body10[1] != '*' && body10[2] != '*') {
 											CHOP(body10);
 											menu.MovePosition(12, ++y);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+										}else { body10[0] = { '\0', }; }
+									}else { body9[0] = { '\0', }; }
+								}else { body8[0] = { '\0', }; }
+							} else {body7[0] = { '\0', };}
+						} else { body6[0] = { '\0', }; }
+					} else {body5[0] = { '\0', };}
+				}else { body4[0] = { '\0', }; }
+			} else {body3[0] = { '\0', };}
+		} else {body2[0] = { '\0', };}
+	} else { body1[0] = { '\0', }; }
 	
 	sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5, BODY6, body7, body8, body9, body10) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s')", date, weather, title, body1, body2, body3, body4, body5,body6, body7, body8, body9, body10);
 
@@ -146,7 +146,9 @@ void WriteDiary::Write() {
 
 	
 	system("cls");
+	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+	main.printBorder();
 	menu.MovePosition(32, 12);
 	cout << "() ()						(\\ /)";
 	menu.MovePosition(32, 13);
