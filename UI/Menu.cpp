@@ -20,14 +20,14 @@ void Menu::MovePosition(int x, int y)
 }
 
 int Menu::SPrintMenu() {
-	//Start start = Start();
 	Main main = Main();
 	Menu menu = Menu();
 	int x = 51;
 	int y = 19;
 
+	
 
-	main.printBorder();
+	
 	bgDraw();
 	menu.MovePosition(x - 4, y); // 원래 51, >를 출력해야하기 때문에 -4
 	cout << ">     시 작 하 기";
@@ -36,6 +36,7 @@ int Menu::SPrintMenu() {
 	menu.MovePosition(x, y + 4);
 	cout << "  종 료 하 기";
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE);
 	while (1) {
 		int n = keyControl(); // 키보드 이벤트를 키값으로 받아오기
 		switch (n)
@@ -166,8 +167,10 @@ void Menu::bgDraw() {
 
 	Menu menu = Menu();
 	Main main = Main();
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), DAKR_YELLOW);
 	main.printBorder();
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), GRAY);
 	menu.MovePosition(35, 4);
 	cout << "                         _   ";
 	menu.MovePosition(35, 5);

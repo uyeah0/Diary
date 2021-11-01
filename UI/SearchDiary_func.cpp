@@ -96,7 +96,8 @@ void SearchDiary_func::Search() { // 일기 검색
 			}
 
 			sql_result = mysql_store_result(connection);
-
+			system("cls");
+			main.printBorder();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
 			menu.MovePosition(80, 7);
 			cout << "아무 키나 누르면 되돌아갑니다.";
@@ -176,7 +177,7 @@ void SearchDiary_func::Search() { // 일기 검색
 
 			//조회
 			const char* pF = find.c_str();
-
+		
 			query_stat = mysql_query(connection, pF);
 
 			if (query_stat != 0) {
@@ -185,6 +186,11 @@ void SearchDiary_func::Search() { // 일기 검색
 
 			sql_result = mysql_store_result(connection);
 
+			system("cls");
+			main.printBorder();
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+			menu.MovePosition(80, 7);
+			cout << "아무 키나 누르면 되돌아갑니다.";
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 				menu.MovePosition(12, 5);
 				cout << "날짜(yyyymmdd) : " << sql_row[1];
@@ -254,10 +260,13 @@ void SearchDiary_func::Search() { // 일기 검색
 
 			sql_result = mysql_store_result(connection);
 
+			system("cls");
+			main.printBorder();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
 			menu.MovePosition(80, 7);
 			cout << "아무 키나 누르면 되돌아갑니다.";
 			
+	
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 				menu.MovePosition(12, 5);
@@ -335,7 +344,11 @@ void SearchDiary_func::Search() { // 일기 검색
 			}
 
 			sql_result = mysql_store_result(connection);
-
+			system("cls");
+			main.printBorder();
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+			menu.MovePosition(80, 7);
+			cout << "아무 키나 누르면 되돌아갑니다.";
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 				menu.MovePosition(12, 5);
 				cout << "날짜(yyyymmdd) : " << sql_row[1];
@@ -534,7 +547,8 @@ void SearchDiary_func::EditDiary() {
 				if (query_stat != 0) {
 					fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
 				}
-
+				system("cls");
+				main.printBorder();
 				sql_result = mysql_store_result(connection);
 				while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
 					menu.MovePosition(12, 5);
@@ -616,15 +630,26 @@ void SearchDiary_func::EditDiary() {
 														CHOP(body10);
 														menu.MovePosition(12, ++y);
 													}
+													else { body10[0] = { '\0', }; }
 												}
+												else { body9[0] = { '\0', }; }
 											}
+											else { body8[0] = { '\0', }; }
 										}
+										else { body7[0] = { '\0', }; }
 									}
+									else { body6[0] = { '\0', }; }
 								}
+								else { body5[0] = { '\0', }; }
 							}
+							else { body4[0] = { '\0', }; }
 						}
+						else { body3[0] = { '\0', }; }
 					}
+					else { body2[0] = { '\0', }; }
 				}
+				else { body1[0] = { '\0', }; }
+
 
 				sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5, BODY6, body7, body8, body9, body10) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s')", dateE, weatherE, titleE, body1, body2, body3, body4, body5, body6, body7, body8, body9, body10);
 
@@ -680,13 +705,13 @@ void SearchDiary_func::EditDiary() {
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과
 				isSearch = TRUE;
 			}
-
+			system("cls");
+			main.printBorder();
 			if (!isSearch) {
-				//system("cls");
-				menu.MovePosition(20, 5);
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+				menu.MovePosition(37, 5);
 				cout << "일기가 존재하지 않습니다!";
-				menu.MovePosition(20, 7);
+				menu.MovePosition(37, 16);
 				cout << "아무 키나 누르면 되돌아갑니다.";
 
 				char ch = _getch();
@@ -697,6 +722,8 @@ void SearchDiary_func::EditDiary() {
 			}
 			else {
 				// 데이터 수정
+				system("cls");
+				main.printBorder();
 				query_stat = mysql_query(connection, pTitle);
 
 				if (query_stat != 0) {
@@ -784,15 +811,26 @@ void SearchDiary_func::EditDiary() {
 														CHOP(body10);
 														menu.MovePosition(12, ++y);
 													}
+													else { body10[0] = { '\0', }; }
 												}
+												else { body9[0] = { '\0', }; }
 											}
+											else { body8[0] = { '\0', }; }
 										}
+										else { body7[0] = { '\0', }; }
 									}
+									else { body6[0] = { '\0', }; }
 								}
+								else { body5[0] = { '\0', }; }
 							}
+							else { body4[0] = { '\0', }; }
 						}
+						else { body3[0] = { '\0', }; }
 					}
+					else { body2[0] = { '\0', }; }
 				}
+				else { body1[0] = { '\0', }; }
+
 
 				sprintf(query, "insert into diary(DATE, WEATHER, TITLE, BODY1, body2, body3, body4, body5, BODY6, body7, body8, body9, body10) values " "( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s')", dateE, weatherE, titleE, body1, body2, body3, body4, body5, body6, body7, body8, body9, body10);
 
@@ -840,165 +878,3 @@ void SearchDiary_func::EditDiary() {
 	}
 }
 
-
-
-
-
-//void SearchDiary_func::SearchDiary() {
-//	Menu menu = Menu();
-//	Main main = Main();
-//	SearchDiary searchdiary = SearchDiary();
-//	bool isSearch = FALSE;
-//	string input;
-//
-//	MYSQL* connection = NULL, conn;
-//	MYSQL_RES* sql_result; // select, show, describe, explain 결과 다루기
-//	MYSQL_ROW sql_row; // row 가리킴
-//	int query_stat;
-//
-//	main.printBorder();
-//
-//	mysql_init(&conn);
-//	// 계정 연결
-//	connection = mysql_real_connect(&conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, NULL, 0);
-//
-//
-//	if (connection == NULL) {
-//		fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
-//	}
-//
-//	//// 한글 사용
-//
-//	mysql_query(connection, "set session character_set_connection=euckr;");
-//	mysql_query(connection, "set session character_set_results=euckr;");
-//	mysql_query(connection, "set session character_set_client=euckr;");
-//
-//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), SKYBLUE);
-//	menu.MovePosition(60, 3);
-//	cout << "작성한 일기를 봅니다." << endl;
-//	menu.MovePosition(60, 5);
-//	cout << "보고 싶은 일기의 제목이나 날짜를 검색해주세요.\n" << endl;
-//	
-//	menu.MovePosition(60, 7);
-//	cin >> input;
-//
-//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
-//	if (input.substr(0, 1) == "2") {// 날짜일 경우 
-//		string date = "select * from diary where date like '%";
-//		date.append(input);
-//		date.append("%'");
-//		//조회
-//		const char* pDate = date.c_str();
-//
-//
-//		query_stat = mysql_query(connection, pDate);
-//
-//		if (query_stat != 0) {
-//			fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
-//		}
-//
-//		sql_result = mysql_store_result(connection);
-//		system("cls");
-//
-//		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
-//			menu.MovePosition(12, 5);
-//			cout << "날짜(yyyymmdd) : " << sql_row[1];
-//
-//			menu.MovePosition(80, 5);
-//			cout << "날씨 : " << sql_row[2];
-//
-//			menu.MovePosition(12, 7);
-//			cout << "제목 (30자이내) : " << sql_row[3];
-//
-//			menu.MovePosition(12, 9);
-//			cout << "내용 : " << endl;
-//			for (int i = 11; i <= 20; i++) {
-//				menu.MovePosition(12, i); // body 출력
-//				cout << sql_row[i - 7];
-//			}
-//
-//		}
-//
-//		if (!isSearch) {
-//			system("cls");
-//			menu.MovePosition(50, 13);
-//			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
-//			cout << "일기가 존재하지 않습니다!";
-//			menu.MovePosition(50, 15);
-//			cout << "아무 키나 누르면 되돌아갑니다.";
-//			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
-//			char ch = _getch();
-//			if (ch != 0) {
-//				system("cls");
-//				searchdiary.SelectMenu();
-//			}
-//		}
-//
-//
-//		mysql_close(connection);
-//	}
-//	else { // 제목일 경우
-//		string title = "select * from diary where title like '";
-//		title.append(input);
-//		title.append("'");
-//
-//		const char* pTitle = title.c_str();
-//
-//		query_stat = mysql_query(connection, pTitle);
-//
-//		if (query_stat != 0) {
-//			fprintf(stderr, "Mysql connection error : %s", mysql_error(&conn));
-//		}
-//
-//		sql_result = mysql_store_result(connection);
-//
-//		while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과
-//			isSearch = TRUE;
-//		}
-//
-//		if (!isSearch) {
-//			system("cls");
-//			main.printBorder();
-//			menu.MovePosition(30, 5);
-//			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
-//			cout << "일기가 존재하지 않습니다!";
-//			menu.MovePosition(30, 7);
-//			cout << "아무 키나 누르면 되돌아갑니다.";
-//
-//			char ch = _getch();
-//			if (ch != 0) {
-//				system("cls");
-//				searchdiary.SelectMenu();
-//			}
-//		}
-//		else {
-//			system("cls");
-//			main.printBorder();
-//			while ((sql_row = mysql_fetch_row(sql_result)) != NULL) { // 조회 결과 출력
-//				menu.MovePosition(12, 5);
-//				cout << "날짜(yyyymmdd) : " << sql_row[1];
-//
-//				menu.MovePosition(80, 5);
-//				cout << "날씨 : " << sql_row[2];
-//
-//				menu.MovePosition(12, 7);
-//				cout << "제목 (30자이내) : " << sql_row[3];
-//
-//				menu.MovePosition(12, 9);
-//				cout << "내용 : " << endl;
-//				for (int i = 11; i <= 20; i++) {
-//					menu.MovePosition(12, i); // body 출력
-//					cout << sql_row[i - 7];
-//				}
-//
-//			}
-//		}
-//
-//		mysql_close(connection);
-//	}
-//
-//
-//
-//
-//}
-//

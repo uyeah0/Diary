@@ -5,8 +5,10 @@ using namespace std;
 
 void Help::PrintHelp() {
 	Main main = Main();
+	
 	char ch;
 	system("cls");
+	main.printBorder();
 	MovePosition(45, 3);
 	cout << "[µµ¿ò¸»]" << endl;
 	MovePosition(40, 6);

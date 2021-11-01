@@ -9,6 +9,7 @@ void Start::printStart() {
 	bool isSetPW = FALSE;
 	bool isTrue = FALSE;
 
+	
 	int menuCode = menu.SPrintMenu();
 	
 	while (isRun) {
@@ -30,8 +31,8 @@ void Start::printStart() {
 				}
 				else {
 					system("cls");
-					main.printBorder();
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+					main.printBorder();
 					menu.MovePosition(38, 12);
 					cout << "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.";
 					menu.MovePosition(43, 14);
@@ -171,19 +172,19 @@ void Start::SetPW() {
 				}
 			}
 			else {
-				system("cls");
-				main.printBorder();
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
-				menu.MovePosition(41, 12);
-				cout << "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.";
-				menu.MovePosition(41, 14);
-				cout << "아무 키나 누르면 되돌아갑니다.";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
-				char ch = _getch();
-				if (ch != 0) {
 					system("cls");
-					start.printStart();
-				}
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+					main.printBorder();
+					menu.MovePosition(39, 12);
+					cout << "비밀번호와 비밀번호 확인이 일치하지 않습니다.";
+					menu.MovePosition(43, 14);
+					cout << "아무 키나 누르면 되돌아갑니다.";
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
+					char ch = _getch();
+					if (ch != 0) {
+						system("cls");
+						printStart();
+					}
 			}
 	}
 	else {
@@ -282,10 +283,10 @@ void Start::SetPW() {
 				}
 				else {
 					system("cls");
-					main.printBorder();
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
-					menu.MovePosition(38, 12);
-					cout << "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.";
+					main.printBorder();
+					menu.MovePosition(40, 12);
+					cout << "현재 비밀번호가 일치하지 않습니다.";
 					menu.MovePosition(43, 14);
 					cout << "아무 키나 누르면 되돌아갑니다.";
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);

@@ -26,6 +26,7 @@ void SearchDiary::SelectMenu() { // 메뉴 고르기
 		case 1:
 			if (!isWatchDiary) { // 일기 목록
 				cout << "일기목록";
+				cout << "현재 사용이 불가능합니다 불편함을 드려서 죄송합니다.";
 				/*sdf.WatchDiary();*/
 				isWatchDiary = TRUE;
 			}
