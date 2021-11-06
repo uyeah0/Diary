@@ -260,7 +260,7 @@ void SearchDiary_func::Search() { // 일기 검색
 
 			sql_result = mysql_store_result(connection);
 
-			system("cls");
+			system("cls"); 
 			main.printBorder();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
 			menu.MovePosition(80, 7);
@@ -367,12 +367,17 @@ void SearchDiary_func::Search() { // 일기 검색
 				}
 
 			}
+			
 
 		}
-
-
+		
 
 		mysql_close(connection);
+	}
+	char ch = _getch();
+	if (ch != 0) {
+		system("cls");
+		searchdiary.SelectMenu();
 	}
 
 
